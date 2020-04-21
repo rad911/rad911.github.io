@@ -346,15 +346,11 @@
 <li>Stream不会改变源对象。在完成相应的计算，会返回一个持有结果的新Stream。</li>
 <li>Stream的操作是延迟执行的。这意味着会等到需要结果的时候才去执行。</li>
 </ol>
-<p>###Stream的三个操作步骤</p>
-<p><strong>创建Stream -&gt; 中间操作 -&gt; 终止操作</strong></p>
-<p>####1.创建Stream</p>
-<p>使用数据源（如：集合、数组），获取一个流</p>
+<h3 id="Stream的三个操作步骤"><a href="#Stream的三个操作步骤" class="headerlink" title="Stream的三个操作步骤"></a>Stream的三个操作步骤</h3><p><strong>创建Stream -&gt; 中间操作 -&gt; 终止操作</strong></p>
+<h4 id="1-创建Stream"><a href="#1-创建Stream" class="headerlink" title="1.创建Stream"></a>1.创建Stream</h4><p>使用数据源（如：集合、数组），获取一个流</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1.可以通过Collection系列集合提供的stream()或者parallelStream()</span></span><br><span class="line">List&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">Stream&lt;String&gt; stream1 = list.stream();</span><br><span class="line"></span><br><span class="line"><span class="comment">//2.通过Arrays中的静态方法stream()获取数组流</span></span><br><span class="line">Employee[] emps = <span class="keyword">new</span> Employee[<span class="number">10</span>];</span><br><span class="line">Stream&lt;Employee&gt; stream2 = Arrays.stream(emps);</span><br><span class="line"></span><br><span class="line"><span class="comment">//3.通过Stream类中的静态方法of()</span></span><br><span class="line">Stream&lt;String&gt; stream3 = Stream.of(<span class="string">"aa"</span>, <span class="string">"bb"</span>, <span class="string">"cc"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//4.创建无限流</span></span><br><span class="line"><span class="comment">// 迭代</span></span><br><span class="line">Stream&lt;String&gt; stream4 = Stream.iterate(<span class="number">0</span>, x-&gt; x+<span class="number">2</span>);</span><br><span class="line"><span class="comment">// 生成</span></span><br><span class="line">Stream.generate(Math.random);</span><br></pre></td></tr></table></figure>
-<p>####2.中间操作</p>
-<p>多个中间操作可以连接起来形成一个流水线，除非流水线上触发终止操作，否则中间操作不会执行任何的处理，而在终止操作时一次性全部处理，称为“惰性求值”。 </p>
-<p>#####2.1 筛选与切片</p>
-<table>
+<h4 id="2-中间操作"><a href="#2-中间操作" class="headerlink" title="2.中间操作"></a>2.中间操作</h4><p>多个中间操作可以连接起来形成一个流水线，除非流水线上触发终止操作，否则中间操作不会执行任何的处理，而在终止操作时一次性全部处理，称为“惰性求值”。 </p>
+<h5 id="2-1-筛选与切片"><a href="#2-1-筛选与切片" class="headerlink" title="2.1 筛选与切片"></a>2.1 筛选与切片</h5><table>
 <thead>
 <tr>
 <th>方法</th>
@@ -620,10 +616,10 @@
 	<span>
 		<a href="javascript: window.scrollTo(0, 0);">返回顶部</a>
 		
-			<a href="/2020/04/21/lambda表达式/" title="Lambda表达式" rel="prev">
-				&laquo;上一篇
-			</a>
 		
+			<a href="/2020/04/21/lambda表达式/" title="Lambda表达式" rel="next">
+				下一篇&raquo;
+			</a>
 			
 	</span>
 
