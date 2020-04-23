@@ -534,7 +534,8 @@
 <thead>
 <tr>
 <th>方法</th>
-<th>返回值</th>
+<th></th>
+<th>流中数据被收集到</th>
 <th>作用</th>
 <th>例子</th>
 </tr>
@@ -542,86 +543,101 @@
 <tbody>
 <tr>
 <td>toList</td>
+<td>无</td>
 <td>List<t></t></td>
 <td>把流中的元素收集到List</td>
 <td><code>List&lt;Employee&gt; emps = list.stream().collect(Collectors.toList());</code></td>
 </tr>
 <tr>
 <td>toSet</td>
+<td>无</td>
 <td>Set<t></t></td>
 <td>把流中元素收集到Set</td>
-<td></td>
+<td><code>Set&lt;Employee&gt; emps = list.stream().collect(Collectors.toSet());s</code></td>
 </tr>
 <tr>
 <td>toCollection</td>
+<td>无</td>
 <td>Collection<t></t></td>
 <td>把流中元素收集到创建的集合</td>
-<td></td>
+<td><code>Collection&lt;Employee&gt; emps = list.stream().collect(Collectors.toCollection(ArrayList::new));;</code></td>
 </tr>
 <tr>
 <td>counting</td>
+<td>无</td>
 <td>Long</td>
 <td>计算流中元素的个数</td>
-<td></td>
+<td><code>long count = list.stream().collect(Collectors.counting());</code></td>
 </tr>
 <tr>
 <td>summingInt</td>
+<td><code>ToIntFunction&lt;? super T&gt; mapper</code></td>
 <td>Integer</td>
 <td>对流中元素的整数属性求和</td>
-<td></td>
+<td><code>int total = list.stream().collect(Collectors.summingInt(Employee::getSalary()));</code></td>
 </tr>
 <tr>
 <td>averagingInt</td>
+<td><code>ToIntFunction&lt;? super T&gt; mapper</code></td>
 <td>Double</td>
 <td>计算流中元素Integer属性的平均值</td>
-<td></td>
+<td><code>double avg = list.stream().collect(Collectors.averagingInt(Employee::getSalary));</code></td>
 </tr>
 <tr>
 <td>summarizingInt</td>
+<td><code>ToIntFunction&lt;? super T&gt; mapper</code></td>
 <td>IntSummaryStatistics</td>
 <td>收集流中Integer属性的统计值</td>
-<td></td>
+<td><code>IntSummaryStatistics iss = list.stream().collect(Collectors.summarizingInt(Employee::getSalary));</code></td>
 </tr>
 <tr>
 <td>join</td>
+<td><code>CharSequence delimiter</code></td>
 <td>String</td>
 <td>连接流中的每一个字符串</td>
-<td></td>
+<td><code>String str = list.stream().map(Employee::getName).collect(Collectors.joining());</code></td>
 </tr>
 <tr>
 <td>maxBy</td>
+<td><code>Comparator&lt;? super T&gt; comparator</code></td>
 <td>Optional<t></t></td>
 <td>根据比较器选择最大值</td>
-<td></td>
+<td><code>Optional&lt;Employee&gt; maxEmployee =  list.stream().collect(Collectors.maxBy(Comparator.comparingInt(Employee::getSalary)))</code></td>
 </tr>
 <tr>
 <td>minBy</td>
+<td><code>Comparator&lt;? super T&gt; comparator</code></td>
 <td>Optional<t></t></td>
 <td>根据比较器选择最小值</td>
-<td></td>
+<td><code>Optional&lt;Employee&gt; minEmployee =  list.stream().collect(Collectors.minBy(Comparator.comparingInt(Employee::getSalary)))</code></td>
 </tr>
 <tr>
 <td>reducing</td>
+<td><code>U identity,                            Function&lt;? super T, ? extends U&gt; mapper,                            BinaryOperator&lt;U&gt; op</code></td>
 <td>规约产生的类型</td>
 <td>从一个作为累加器的初始值开始，利用BinaryOperator与流中元素逐个结合，从而归约成单个值</td>
-<td></td>
+<td><code>int total  = list.stream().collect(Collectors.reducing(0, Employee::getSalar, Integer::sum));</code></td>
 </tr>
 <tr>
 <td>collectingAndThen</td>
+<td><code>Collector&lt;T,A,R&gt; downstream,                                                            Function&lt;R,RR&gt; finisher</code></td>
 <td>转换函数返回的类型</td>
-<td>包裹另一个收集器，对其结果转换函数</td>
-<td></td>
+<td>将流的结果收集到集合中，在对集合做操作</td>
+<td><code>int size = list.stream().collect(Collectors.collectingAndThen());</code></td>
 </tr>
 <tr>
 <td>groupingBy</td>
+<td><code>Function&lt;? super T, ? extends K&gt; classifier</code></td>
 <td>Map&lt;K, List<t>&gt;</t></td>
 <td>根据某属性值对流分组，属性为K，结果为V</td>
-<td></td>
+<td><code>Map&lt;String ,List&lt;Employee&gt;&gt; map = list.stream().collect(Collectors.groupingBy(Employee::getStatus));</code></td>
 </tr>
 <tr>
 <td>partitioningBy</td>
+<td><code>Predicate&lt;? super T&gt; predicate</code></td>
 <td>Map&lt;Boolean, List<t>&gt;</t></td>
 <td>根据true或者false进行分区</td>
+<td><code>Map&lt;Boolean, List&lt;Employee&gt;&gt; map = list.stream().collect(Collectors.partitioningBy(Employee::getManage));</code></td>
 </tr>
 </tbody>
 </table>
