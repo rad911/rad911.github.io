@@ -311,7 +311,7 @@
 
 	<a href="/2020/04/21/Stream/" itemprop="url">
 		<time datetime="2020-04-20T16:00:00.000Z" itemprop="dateUpdated">
-	  		2020-04-22
+	  		2020-04-23
 	  </time>
 	</a> 
 
@@ -360,15 +360,15 @@
 <tbody>
 <tr>
 <td><code>filter (Predicate p)</code></td>
-<td>接收Lambda，从流中排除某些元素</td>
+<td>接收Lambda，从流中排除某些元素。Predicate<t>接口的唯一抽象的方法为<code>boolean test(T t);</code>。</t></td>
 </tr>
 <tr>
 <td><code>distinct</code>()</td>
-<td>筛选，通过流所生成元素的hashCode()和equals方法去除重复元素</td>
+<td>筛选，通过流所生成元素的hashCode()和equals方法去除重复元素。</td>
 </tr>
 <tr>
 <td><code>limit(long maxSize)</code></td>
-<td>截断流，使其元素不超过给定数量</td>
+<td>截断流，使其元素不超过给定数量。</td>
 </tr>
 <tr>
 <td><code>skip(long n)</code></td>
@@ -386,23 +386,23 @@
 <tbody>
 <tr>
 <td><code>map(Function f)</code></td>
-<td>接收一个函数作为参数，该函数会被应用到每个元素上，并将其映射成一个新的元素</td>
+<td>接收一个函数作为参数，该函数会被应用到每个元素上，并将其映射成一个新的元素。Function接口的唯一抽象方法为<code>R apply(T t);</code>。</td>
 </tr>
 <tr>
 <td><code>mapToDouble(ToDoubleFunction f)</code></td>
-<td>接收一个函数作为参数，该函数会被应用到一个每个元素上，产生一个新的DoubleStream</td>
+<td>接收一个函数作为参数，该函数会被应用到一个每个元素上，产生一个新的DoubleStream对象ToDoubleFunction接口唯一的抽象方法为<code>double applyAsDouble(T value);</code>。</td>
 </tr>
 <tr>
 <td><code>mapToInt(ToIntFunction f)</code></td>
-<td>接收一个函数作为参数，该函数会被应用到每个元素上，产生一个新的IntStream</td>
+<td>接收一个函数作为参数，该函数会被应用到每个元素上，产生一个新的IntStream对象。ToIntFunction接口唯一的抽象方法为<code>int applyAsInt(T value);</code>。</td>
 </tr>
 <tr>
 <td><code>mapToLong(ToLongFunction f)</code></td>
-<td>接收一个函数作为参数，该函数会被应用到每个元素上，产生一个新的LongStream</td>
+<td>接收一个函数作为参数，该函数会被应用到每个元素上，产生一个新的LongStream对象。ToLongFunction接口唯一的抽象方法为<code>long applyAsLong(T value);</code>。</td>
 </tr>
 <tr>
 <td><code>flatMap(Function f)</code></td>
-<td>接收一个函数作为参数，将流中的每个值都换成另一个流，然后把所有的流连接成一个流</td>
+<td>接收一个函数作为参数，将流中的每个值都换成另一个流，然后把所有的流连接成一个流。Function接口的唯一抽象方法为<code>R apply(T t);</code>。</td>
 </tr>
 </tbody>
 </table>
@@ -416,16 +416,16 @@
 <tbody>
 <tr>
 <td><code>sorted()</code></td>
-<td>产生一个新流，其中按照自然顺序排序</td>
+<td>产生一个新流，其中按照自然顺序排序。</td>
 </tr>
 <tr>
 <td><code>sorted(Comparator comp)</code></td>
-<td>产生一个新流，其中按比较器顺序排序</td>
+<td>产生一个新流，其中按比较器顺序排序。</td>
 </tr>
 </tbody>
 </table>
 <h4 id="3-终止操作"><a href="#3-终止操作" class="headerlink" title="3.终止操作"></a>3.终止操作</h4><p>终止操作会从流的流水线生成结果。其结果可以是任何不是流的值，例如：List、Integer，甚至是void。</p>
-<h5 id="匹配"><a href="#匹配" class="headerlink" title="匹配"></a>匹配</h5><p>返回boolean值</p>
+<h5 id="3-1-匹配"><a href="#3-1-匹配" class="headerlink" title="3.1 匹配"></a>3.1 匹配</h5><p>返回boolean值</p>
 <table>
 <thead>
 <tr>
@@ -436,19 +436,19 @@
 <tbody>
 <tr>
 <td><code>allMatch(Predicate p)</code></td>
-<td>检查是否匹配所有的元素</td>
+<td>检查是否匹配所有的元素。Predicate<t>接口的唯一抽象的方法为<code>boolean test(T t);</code>。</t></td>
 </tr>
 <tr>
 <td><code>anyMatch(Predicate p)</code></td>
-<td>检查是否至少匹配一个元素</td>
+<td>检查是否至少匹配一个元素。Predicate<t>接口的唯一抽象的方法为<code>boolean test(T t);</code>。</t></td>
 </tr>
 <tr>
 <td><code>noneMatch(Predicate p)</code></td>
-<td>检查是否没有匹配所有的元素</td>
+<td>检查是否没有匹配所有的元素。Predicate<t>接口的唯一抽象的方法为<code>boolean test(T t);</code>。</t></td>
 </tr>
 </tbody>
 </table>
-<h5 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h5><table>
+<h5 id="3-2-查找"><a href="#3-2-查找" class="headerlink" title="3.2 查找"></a>3.2 查找</h5><table>
 <thead>
 <tr>
 <th>方法</th>
@@ -458,31 +458,28 @@
 <tbody>
 <tr>
 <td><code>findFirst()</code></td>
-<td>返回第一个元素</td>
+<td>返回第一个元素。</td>
 </tr>
 <tr>
 <td><code>findAny()</code></td>
-<td>返回当前流中的任意元素</td>
+<td>返回当前流中的任意元素。</td>
 </tr>
 <tr>
 <td><code>count()</code></td>
-<td>返回流中的元素总数</td>
+<td>返回流中的元素总数。</td>
 </tr>
 <tr>
 <td><code>max(Comparator c)</code></td>
-<td>返回流中的最大值</td>
+<td>返回流中的最大值。</td>
 </tr>
 <tr>
 <td><code>min(Comparator c)</code></td>
-<td>返回流中的最小值</td>
-</tr>
-<tr>
-<td><code>forEach(Consumer c)</code></td>
-<td>内部迭代</td>
+<td>返回流中的最小值。</td>
 </tr>
 </tbody>
 </table>
-<h5 id="规约"><a href="#规约" class="headerlink" title="规约"></a>规约</h5><table>
+<h5 id="3-3-迭代"><a href="#3-3-迭代" class="headerlink" title="3.3 迭代"></a>3.3 迭代</h5><p>返回值为空</p>
+<table>
 <thead>
 <tr>
 <th>方法</th>
@@ -491,16 +488,33 @@
 </thead>
 <tbody>
 <tr>
-<td><code>reduce(T iden, BinaryOperator b)</code></td>
-<td>可以将流中元素反复结合起来，得到一个值。</td>
-</tr>
-<tr>
-<td><code>reduce(BinaryOperator b)</code></td>
-<td>可以将流中元素反复结合起来，得到一个值，返回Optional<t></t></td>
+<td><code>forEach(Consumer c)</code></td>
+<td>内部迭代。</td>
 </tr>
 </tbody>
 </table>
-<h5 id="收集"><a href="#收集" class="headerlink" title="收集"></a>收集</h5><table>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i = <span class="number">0</span></span><br><span class="line">List&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">list.add(++i);</span><br><span class="line">list.add(++i);</span><br><span class="line">list.add(++i);</span><br><span class="line">list.add(++i);</span><br><span class="line">list.forEach(System.out::println);</span><br><span class="line">list.add(++i); </span><br><span class="line">Integer[] ints = <span class="keyword">new</span> Integer[]&#123;&#125;;</span><br><span class="line">ints = list.toArray(ints);</span><br><span class="line">System.out.println(Arrays.asList(ints));</span><br><span class="line"></span><br><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment">    输出结果为:</span></span><br><span class="line"><span class="comment">    1</span></span><br><span class="line"><span class="comment">    2</span></span><br><span class="line"><span class="comment">    [1, 2, 3, 4, 5]</span></span><br><span class="line"><span class="comment">    3</span></span><br><span class="line"><span class="comment">    4</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<p>根据打印顺序显示，forEach 方法开启了一个新的线程。在这个线程开启后，外界操作对其中的集合将没有任何影响。</p>
+<h5 id="3-4-规约"><a href="#3-4-规约" class="headerlink" title="3.4 规约"></a>3.4 规约</h5><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>reduce(BinaryOperator b)</code></td>
+<td>可以将流中元素反复结合起来，得到一个值，返回Optional<t>。BinaryOperator（二元运算符）继承于BiFunction，唯一的抽象方法为<code>R apply(T t, U u);</code>。</t></td>
+</tr>
+<tr>
+<td><code>reduce(T iden, BinaryOperator b)</code></td>
+<td>可以将流中元素反复结合起来，得到一个值。iden代表的是初始值。</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用reduce(BinaryOperator b)完成累加</span></span><br><span class="line">List&lt;Integer&gt; list = Arrays.asList(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>);</span><br><span class="line">System.out.println(list.stream().reduce((a, b) -&gt; a+b).get());	</span><br><span class="line"><span class="comment">// 结果为6</span></span><br><span class="line"><span class="comment">// lambada表达式的a参数是表达式的执行结果的缓存，也就是表达式这一次的执行结果会被作为下一次执行的参数。</span></span><br><span class="line"><span class="comment">// 而第二个参数b则是依次为stream中每个元素。如果表达式是第一次被执行，a则是stream中的第一个元素。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用reduce(T iden, BinaryOperator b)完成累加</span></span><br><span class="line">List&lt;Integer&gt; list = Arrays.asList(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>);</span><br><span class="line">System.out.println(list.stream().reduce(-<span class="number">1</span>, (a, b) -&gt; a+b).get());</span><br><span class="line"><span class="comment">// 结果为5</span></span><br><span class="line"><span class="comment">// 与reduce(BinaryOperator b)相比多了一次累加的过程，第一次被执行时，a为iden(-1)，b为第一个元素。</span></span><br></pre></td></tr></table></figure>
+<h5 id="3-5-收集"><a href="#3-5-收集" class="headerlink" title="3.5 收集"></a>3.5 收集</h5><table>
 <thead>
 <tr>
 <th>方法</th>
@@ -522,6 +536,7 @@
 <th>方法</th>
 <th>返回值</th>
 <th>作用</th>
+<th>例子</th>
 </tr>
 </thead>
 <tbody>
@@ -529,66 +544,79 @@
 <td>toList</td>
 <td>List<t></t></td>
 <td>把流中的元素收集到List</td>
+<td><code>List&lt;Employee&gt; emps = list.stream().collect(Collectors.toList());</code></td>
 </tr>
 <tr>
 <td>toSet</td>
 <td>Set<t></t></td>
 <td>把流中元素收集到Set</td>
+<td></td>
 </tr>
 <tr>
 <td>toCollection</td>
 <td>Collection<t></t></td>
 <td>把流中元素收集到创建的集合</td>
+<td></td>
 </tr>
 <tr>
 <td>counting</td>
 <td>Long</td>
 <td>计算流中元素的个数</td>
+<td></td>
 </tr>
 <tr>
 <td>summingInt</td>
 <td>Integer</td>
 <td>对流中元素的整数属性求和</td>
+<td></td>
 </tr>
 <tr>
 <td>averagingInt</td>
 <td>Double</td>
 <td>计算流中元素Integer属性的平均值</td>
+<td></td>
 </tr>
 <tr>
 <td>summarizingInt</td>
 <td>IntSummaryStatistics</td>
 <td>收集流中Integer属性的统计值</td>
+<td></td>
 </tr>
 <tr>
 <td>join</td>
 <td>String</td>
 <td>连接流中的每一个字符串</td>
+<td></td>
 </tr>
 <tr>
 <td>maxBy</td>
 <td>Optional<t></t></td>
 <td>根据比较器选择最大值</td>
+<td></td>
 </tr>
 <tr>
 <td>minBy</td>
 <td>Optional<t></t></td>
 <td>根据比较器选择最小值</td>
+<td></td>
 </tr>
 <tr>
 <td>reducing</td>
 <td>规约产生的类型</td>
 <td>从一个作为累加器的初始值开始，利用BinaryOperator与流中元素逐个结合，从而归约成单个值</td>
+<td></td>
 </tr>
 <tr>
 <td>collectingAndThen</td>
 <td>转换函数返回的类型</td>
 <td>包裹另一个收集器，对其结果转换函数</td>
+<td></td>
 </tr>
 <tr>
 <td>groupingBy</td>
 <td>Map&lt;K, List<t>&gt;</t></td>
 <td>根据某属性值对流分组，属性为K，结果为V</td>
+<td></td>
 </tr>
 <tr>
 <td>partitioningBy</td>
