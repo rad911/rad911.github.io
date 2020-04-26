@@ -346,8 +346,12 @@
 <h3 id="获取Optional的值"><a href="#获取Optional的值" class="headerlink" title="获取Optional的值"></a>获取Optional的值</h3><p>Optional提供了一个get方法，它能够非常精准地完成这项工作，我们在后面会详细介绍这部分内容。不过get方法在遭遇到空的Optional对象时，也会抛出异常，所以不按照约定的方法使用它，又会让我们再度陷入由null引起的代码维护的梦魇。我们需要先关注无需显示检查的Optional值的使用入手，这些方法与Stream中的某些操作及其相似。</p>
 <h4 id="1-使用map从Optional对象中提取值"><a href="#1-使用map从Optional对象中提取值" class="headerlink" title="1. 使用map从Optional对象中提取值"></a>1. 使用map从Optional对象中提取值</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用Optional对象之前</span></span><br><span class="line">String name = <span class="keyword">null</span>;</span><br><span class="line"><span class="keyword">if</span>(car!=<span class="keyword">null</span>)&#123;</span><br><span class="line">    name = car.getName;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用Optional对象之后</span></span><br><span class="line">Option&lt;Car&gt; optCar = Optional.ofNullable(car);</span><br><span class="line">Option&lt;String&gt; name = optCar.map(Car::getName);</span><br></pre></td></tr></table></figure>
 <p>如果car对象为空的话，map方法会返回一个空的Optional对象。</p>
+<p>map中封装了判断Optional对象是否为空的判断。下面是Optional中map方法的源码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span>&lt;U&gt; Optional&lt;U&gt; <span class="title">map</span><span class="params">(Function&lt;? <span class="keyword">super</span> T, ? extends U&gt; mapper)</span> </span>&#123;</span><br><span class="line">    Objects.requireNonNull(mapper);</span><br><span class="line">    <span class="comment">// Optional对象是否存在值</span></span><br><span class="line">    <span class="keyword">if</span> (!isPresent())</span><br><span class="line">        <span class="keyword">return</span> empty();</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> Optional.ofNullable(mapper.apply(value));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="2-使用flatMap从Optional对象中提取值"><a href="#2-使用flatMap从Optional对象中提取值" class="headerlink" title="2. 使用flatMap从Optional对象中提取值"></a>2. 使用flatMap从Optional对象中提取值</h4><p>map方法是将提取的结果封装成Optional对象，而flatmap则没有做封装工作，只做了提取。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用flatMap方法</span></span><br><span class="line">Option&lt;Car&gt; optCar = Optional.ofNullable(car);</span><br><span class="line">String name = optCar.flatMap(Car::getName);</span><br></pre></td></tr></table></figure>
+<p>和map一样，flatMap也进行了非空判断。源码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span>&lt;U&gt; Optional&lt;U&gt; <span class="title">flatMap</span><span class="params">(Function&lt;? <span class="keyword">super</span> T, Optional&lt;U&gt;&gt; mapper)</span> </span>&#123;</span><br><span class="line">    Objects.requireNonNull(mapper);</span><br><span class="line">    <span class="keyword">if</span> (!isPresent())</span><br><span class="line">        <span class="keyword">return</span> empty();</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> Objects.requireNonNull(mapper.apply(value));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="3-使用其他方法读取Optional实例中的变量值"><a href="#3-使用其他方法读取Optional实例中的变量值" class="headerlink" title="3. 使用其他方法读取Optional实例中的变量值"></a>3. 使用其他方法读取Optional实例中的变量值</h4><table>
 <thead>
 <tr>
@@ -378,6 +382,9 @@
 </tr>
 </tbody>
 </table>
+<h4 id="4-对Optional对象进行过滤"><a href="#4-对Optional对象进行过滤" class="headerlink" title="4. 对Optional对象进行过滤"></a>4. 对Optional对象进行过滤</h4><p>filter() :如果有值并且满足条件返回包含该值的Optional，否则返回空Optional。</p>
+<p>源码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Optional&lt;T&gt; <span class="title">filter</span><span class="params">(Predicate&lt;? <span class="keyword">super</span> T&gt; predicate)</span> </span>&#123;</span><br><span class="line">        Objects.requireNonNull(predicate);</span><br><span class="line">        <span class="keyword">if</span> (!isPresent())</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">return</span> predicate.test(value) ? <span class="keyword">this</span> : empty();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 	
 	</div>
 	
@@ -397,7 +404,7 @@
 		<a href="javascript: window.scrollTo(0, 0);">返回顶部</a>
 		
 		
-			<a href="/2020/04/21/Stream/" title="Stream" rel="next">
+			<a href="/2020/04/21/lambda表达式/" title="Lambda表达式" rel="next">
 				下一篇&raquo;
 			</a>
 			
@@ -415,29 +422,6 @@
 <div class="relate-post">
 	
 		<ul>
-			
-					<li>
-						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2020/04/21/Stream/" title="Stream">
-								Stream			
-							</a>
-							<p class="relate-post-date">
-								<i class="fa fa-calendar"></i>
-								四月 21日, 2020				
-							</p>
-							<p class="relate-post-content">
-								Java 8 中的 Stream 是对集合对象功能的增强，它专注于对集合对象进行各种非常便利、高效的聚合操作或者大批量数据操作。Stream API（java.util.stream.*）提供了一种高效且易于使用的处理数据的方式。使用...
-							</p>
-						</div>
-
-						<div class="relate-post-cover">
-							<a href="/2020/04/21/Stream/" title="Stream">				
-								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="Stream">
-							</a>
-						</div>
-					</li>											
-			
 			
 					<li>
 						<div class="relate-post-text">
@@ -459,6 +443,29 @@
 							<a href="/2020/04/21/lambda表达式/" title="Lambda表达式">				
 								
 								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="Lambda表达式">
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2020/04/21/Stream/" title="Stream">
+								Stream			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								四月 21日, 2020				
+							</p>
+							<p class="relate-post-content">
+								Java 8 中的 Stream 是对集合对象功能的增强，它专注于对集合对象进行各种非常便利、高效的聚合操作或者大批量数据操作。Stream API（java.util.stream.*）提供了一种高效且易于使用的处理数据的方式。使用...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2020/04/21/Stream/" title="Stream">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="Stream">
 							</a>
 						</div>
 					</li>											
