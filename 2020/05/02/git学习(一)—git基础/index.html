@@ -13,7 +13,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
   <title>
     
-      Lambda表达式 | Rad的博客
+      git基础 | Rad的博客
     
   </title>
   <meta name="author" content="Rad">
@@ -160,7 +160,7 @@
 	<!-- Page title -->
 	<p>
 		
-			当前文章&nbsp;:&nbsp;《Lambda表达式》
+			当前文章&nbsp;:&nbsp;《git基础》
 		
 	</p>
 
@@ -277,8 +277,8 @@
 	<div class="article-title">
 		<i class="fa fa-paper-plane-o" aria-hidden="true"></i>
 		
-	<a href="/2020/04/21/lambda表达式/" itemprop="url">
-		Lambda表达式
+	<a href="/2020/05/02/git学习(一)—git基础/" itemprop="url">
+		git基础
 	</a>
 
 	</div>
@@ -291,9 +291,9 @@
 
 	发布于
 
-	<a href="/2020/04/21/lambda表达式/" itemprop="url">
-		<time datetime="2020-04-20T16:00:00.000Z" itemprop="datePublished">
-	  		2020-04-21
+	<a href="/2020/05/02/git学习(一)—git基础/" itemprop="url">
+		<time datetime="2020-05-01T16:00:00.000Z" itemprop="datePublished">
+	  		2020-05-02
 	  </time>
 	</a>
 	&nbsp;
@@ -309,9 +309,9 @@
 
 	更新于
 
-	<a href="/2020/04/21/lambda表达式/" itemprop="url">
-		<time datetime="2020-04-20T16:00:00.000Z" itemprop="dateUpdated">
-	  		2020-04-21
+	<a href="/2020/05/02/git学习(一)—git基础/" itemprop="url">
+		<time datetime="2020-05-01T16:00:00.000Z" itemprop="dateUpdated">
+	  		2020-05-02
 	  </time>
 	</a> 
 
@@ -322,8 +322,8 @@
 			<i class="fa fa-tags"></i>
 			
 	
-		<a href="/tags/Java-8/" class=" ">
-			Java 8
+		<a href="/tags/git/" class=" ">
+			git
 		</a>
 	
 		
@@ -336,71 +336,41 @@
 	</div>
 
 	<div class="article-content" id="article-content">
-		<p>Lambda是一个匿名函数，我们可以理解为是一段可以传递的代码，可以写出更简洁、更灵活的代码。作为一种更紧凑的代码风格，使Java语言的表达能力得到提升。</p>
-<h3 id="函数式接口"><a href="#函数式接口" class="headerlink" title="函数式接口"></a>函数式接口</h3><p>Lambda表示式需要函数式接口的支持。</p>
-<p>函数式接口：接口只有一个抽象方法的接口，称为函数式接口。可以使用注解@FunctionalInterface修饰，可以检查接口是不是函数式接口。</p>
-<h3 id="四大内置的函数式接口"><a href="#四大内置的函数式接口" class="headerlink" title="四大内置的函数式接口"></a>四大内置的函数式接口</h3><table>
-<thead>
-<tr>
-<th style="text-align:left">函数式接口</th>
-<th>参数类型</th>
-<th>返回类型</th>
-<th>用途</th>
-<th>接口方法</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">Consumer<t> 消费型接口</t></td>
-<td>T</td>
-<td>void</td>
-<td>对类型为T的对象应用操作</td>
-<td>void accept(T t);</td>
-</tr>
-<tr>
-<td style="text-align:left">Supplier<t> 供给型接口</t></td>
-<td>无</td>
-<td>T</td>
-<td>返回类型为T的对象</td>
-<td>T get();</td>
-</tr>
-<tr>
-<td style="text-align:left">Function&lt;T, R&gt; 函数型接口</td>
-<td>T</td>
-<td>R</td>
-<td>对类型为T的对象应用操作，并返回R类型的对象。</td>
-<td>R apply (T t);</td>
-</tr>
-<tr>
-<td style="text-align:left">Predicate<t> 断定型接口</t></td>
-<td>T</td>
-<td>boolean</td>
-<td>确定类型为T的对象是否满足某约束，并返回boolean值。</td>
-<td>boolean test(T t);</td>
-</tr>
-</tbody>
-</table>
-<h3 id="Lambda表达式语法"><a href="#Lambda表达式语法" class="headerlink" title="Lambda表达式语法"></a>Lambda表达式语法</h3><p>Lambda表达式在Java语言中引入了一个新的语法元素和操作符。这个操作符为”-&gt;”，该操作符被称为Lamba操作符。它将Lambda分为两个部分：</p>
-<p><strong>左侧</strong>：指定了Lambda表达式需要的所有参数。</p>
-<p>（1）当参数只有一个时，可以进行省略小括号。</p>
-<p>（2）参数传递的时候，不需要传递类型，Java8通过上下文推导出类型。</p>
-<p><strong>右侧</strong>：指定了Lambda体，即Lambda表达式要执行的功能</p>
-<p>当Lambda体只有一条语句时，return和{}都可以省略</p>
-<p>例子：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x -&gt; System.out.println(x);</span><br></pre></td></tr></table></figure>
-<h4 id="方法引用"><a href="#方法引用" class="headerlink" title="方法引用"></a>方法引用</h4><p>如果Lambda体中的内容有方法已经实现了，我们可以使用“方法引用”。</p>
-<p>主要有三种语法格式：</p>
-<p>（1）对象::实例方法名</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用前，普通Lambda表达式</span></span><br><span class="line">Consumer&lt;String&gt; con = x -&gt; System.out.println(x);</span><br><span class="line"><span class="comment">// 使用方法引用</span></span><br><span class="line">Consumer&lt;String&gt; con1 = System.out::println;</span><br></pre></td></tr></table></figure>
-<p>（2）类::静态方法名</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用前，普通Lambda表达式</span></span><br><span class="line">Comparator&lt;Integer&gt; com = (x, y) -&gt; Integer.compare(x, y);</span><br><span class="line"><span class="comment">// 使用方法引用</span></span><br><span class="line">Comparator&lt;Integer&gt; com1 = Integer::compare;</span><br></pre></td></tr></table></figure>
-<p>（3）类::实例方法名</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用前，普通Lambda表达式</span></span><br><span class="line">BiPredicate&lt;String, String&gt; bp = (x, y) -&gt; x.equals(y);</span><br><span class="line"><span class="comment">// 使用方法引用</span></span><br><span class="line"><span class="comment">// 第一个参数是实例方法的调用者，第二个参数是实例方法的参数时，可以使用ClassName::method</span></span><br><span class="line">BiPredicate&lt;String, String&gt; bp1 = String::equals;</span><br></pre></td></tr></table></figure>
-<h4 id="构造器引用"><a href="#构造器引用" class="headerlink" title="构造器引用"></a>构造器引用</h4><p>格式:</p>
-<p>ClassName::new</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用前，普通Lambda表达式</span></span><br><span class="line">Supplier&lt;Employee&gt; sup = () -&gt; <span class="keyword">new</span> Employee();</span><br><span class="line"><span class="comment">// 使用构造器引用后</span></span><br><span class="line">Supplier&lt;Employee&gt; sup1 = Employee::<span class="keyword">new</span>;</span><br></pre></td></tr></table></figure>
-<h4 id="数组引用"><a href="#数组引用" class="headerlink" title="数组引用"></a>数组引用</h4><p>Type::new</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用前，普通Lambda表达式</span></span><br><span class="line">Function&lt;Integer, String[]&gt; fun = (x) -&gt; <span class="keyword">new</span> String[x];</span><br><span class="line"><span class="comment">// 数组引用</span></span><br><span class="line">Function&lt;Integer, String[]&gt; fun1 = String[]::<span class="keyword">new</span>;</span><br></pre></td></tr></table></figure>
+		<p>Git 是一个开源的分布式版本控制系统，可以有效、高速地处理从很小到非常大的项目版本管理。</p>
+<h3 id="1-获取Git仓库"><a href="#1-获取Git仓库" class="headerlink" title="1.获取Git仓库"></a>1.获取Git仓库</h3><p>通常有两种获取Git项目仓库的方式：</p>
+<ol>
+<li>将本地尚未进行版本控制的本地目录转换为Git仓库；</li>
+<li>从其他服务器上克隆一个已存在的Git仓库</li>
+</ol>
+<h4 id="在已存目录中初始化仓库"><a href="#在已存目录中初始化仓库" class="headerlink" title="在已存目录中初始化仓库"></a>在已存目录中初始化仓库</h4><p>具体步骤如下：</p>
+<p>（1）先切换到项目的根目录下</p>
+<p>（2）再执行<code>git init</code>命令</p>
+<p>该命令将创建一个名为<code>.git</code>的子目录，所有有关此项目的快照数据都存放在这里。</p>
+<h4 id="克隆现有仓库"><a href="#克隆现有仓库" class="headerlink" title="克隆现有仓库"></a>克隆现有仓库</h4><p>可以使用git clone的命令去拉取代码。</p>
+<p>可以采用以下两种方式进行拉取：</p>
+<p>（1）<code>git clone url</code></p>
+<p>​    url为仓库的传输地址。如果不指定分支时， 会拉取远程Git仓库中的每个文件的每个版本。</p>
+<p>（2）<code>git clone -b branchName url</code></p>
+<p>​    只拉取指定仓库中的指定的分支。</p>
+<h3 id="2-记录每次更新到仓库"><a href="#2-记录每次更新到仓库" class="headerlink" title="2.记录每次更新到仓库"></a>2.记录每次更新到仓库</h3><p>在工作目录下每个文件都不外乎这两种状态：<strong>已跟踪</strong>或<strong>未跟踪</strong>。已跟踪的文件是指那些被纳入了版本控制的文件，在上一次快照中有它们的记录，在工作一段时间后，它们的状态可能是未修改，已修改或者已放入暂存区。</p>
+<p>工作目录中除了已跟踪的文件外的其他文件都属于未跟踪的文件，它们既不属于上次快照的记录中，也没有被放入暂存区。初次克隆某个仓库时，工作目录中的所有文件都属于已跟踪的文件，并处于未修改状态。</p>
+<h4 id="查看工作区和暂存区文件的状态"><a href="#查看工作区和暂存区文件的状态" class="headerlink" title="查看工作区和暂存区文件的状态"></a>查看工作区和暂存区文件的状态</h4><p>使用<code>git status</code> 查看当前工作区和暂存区文件的状态。</p>
+<p>如果在克隆仓库后立即使用此命令，会看到类似这样的输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line">Your branch is up-to-date with &apos;origin/master&apos;.</span><br><span class="line">nothing to commit, working directory clean</span><br></pre></td></tr></table></figure>
+<h4 id="跟踪新文件和暂存已修改的文件"><a href="#跟踪新文件和暂存已修改的文件" class="headerlink" title="跟踪新文件和暂存已修改的文件"></a>跟踪新文件和暂存已修改的文件</h4><p>使用git add命令，可以跟踪新文件或者把已跟踪的文件存放到暂存区中。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">--提交单个未跟踪或者修改的文件--</span><br><span class="line">$ git add filename</span><br><span class="line">--提交所有未跟踪或者修改的文件--</span><br><span class="line">$ git add .</span><br><span class="line">$ git add all</span><br></pre></td></tr></table></figure>
+<h4 id="提交更新"><a href="#提交更新" class="headerlink" title="提交更新"></a>提交更新</h4><p>将暂存区的文件提交到版本库中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git commit -m &quot;提交信息&quot;</span><br></pre></td></tr></table></figure>
+<h4 id="移除文件"><a href="#移除文件" class="headerlink" title="移除文件"></a>移除文件</h4><p>如果只想将文件从Git仓库中删除，但仍然希望保留在当前工作目录。</p>
+<p>可以使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git rm --cached filename</span><br></pre></td></tr></table></figure>
+<p>如果急需要从跟踪文件中移除，还有在硬盘硬盘上删除该文件，则需要运行以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git rm filename</span><br></pre></td></tr></table></figure>
+<p>如果要删除之前修改过或已经放到暂存区的文件，则必须使用强制删除选项<code>-f</code>。</p>
+<h4 id="移动文件或重命名"><a href="#移动文件或重命名" class="headerlink" title="移动文件或重命名"></a>移动文件或重命名</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git mv file_from file_to</span><br></pre></td></tr></table></figure>
+<p>参考：</p>
+<p><a href="https://git-scm.com/book/zh/v2" target="_blank" rel="noopener">https://git-scm.com/book/zh/v2</a></p>
+<p><a href="https://www.softwhy.com/qiduan/git_course/" target="_blank" rel="noopener">https://www.softwhy.com/qiduan/git_course/</a></p>
 	
 	</div>
 	
@@ -419,10 +389,10 @@
 	<span>
 		<a href="javascript: window.scrollTo(0, 0);">返回顶部</a>
 		
-			<a href="/2020/04/21/Stream/" title="Stream" rel="prev">
-				&laquo;上一篇
-			</a>
 		
+			<a href="/2020/04/26/Optional/" title="Optional" rel="next">
+				下一篇&raquo;
+			</a>
 			
 	</span>
 
@@ -488,26 +458,24 @@
 			
 					<li>
 						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2020/05/02/git学习(一)—git基础/" title="git基础">
-								git基础			
+							<a class="relate-post-title" href="/2020/04/21/lambda表达式/" title="Lambda表达式">
+								Lambda表达式			
 							</a>
 							<p class="relate-post-date">
 								<i class="fa fa-calendar"></i>
-								五月 2日, 2020				
+								四月 21日, 2020				
 							</p>
 							<p class="relate-post-content">
-								Git 是一个开源的分布式版本控制系统，可以有效、高速地处理从很小到非常大的项目版本管理。
-1.获取Git仓库通常有两种获取Git项目仓库的方式：
-
-将本地尚未进行版本控制的本地目录转换为Git仓库；
-从其他服务器上克隆一个已存在的G...
+								Lambda是一个匿名函数，我们可以理解为是一段可以传递的代码，可以写出更简洁、更灵活的代码。作为一种更紧凑的代码风格，使Java语言的表达能力得到提升。
+函数式接口Lambda表示式需要函数式接口的支持。
+函数式接口：接口只有一个抽...
 							</p>
 						</div>
 
 						<div class="relate-post-cover">
-							<a href="/2020/05/02/git学习(一)—git基础/" title="git基础">				
+							<a href="/2020/04/21/lambda表达式/" title="Lambda表达式">				
 								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="git基础">
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="Lambda表达式">
 							</a>
 						</div>
 					</li>											
