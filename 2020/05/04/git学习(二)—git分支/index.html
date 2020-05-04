@@ -13,7 +13,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
   <title>
     
-      git学习(一)——git基础 | Rad的博客
+      git学习(二)——git分支 | Rad的博客
     
   </title>
   <meta name="author" content="Rad">
@@ -160,7 +160,7 @@
 	<!-- Page title -->
 	<p>
 		
-			当前文章&nbsp;:&nbsp;《git学习(一)——git基础》
+			当前文章&nbsp;:&nbsp;《git学习(二)——git分支》
 		
 	</p>
 
@@ -277,8 +277,8 @@
 	<div class="article-title">
 		<i class="fa fa-paper-plane-o" aria-hidden="true"></i>
 		
-	<a href="/2020/05/02/git学习(一)—git基础/" itemprop="url">
-		git学习(一)——git基础
+	<a href="/2020/05/04/git学习(二)—git分支/" itemprop="url">
+		git学习(二)——git分支
 	</a>
 
 	</div>
@@ -291,9 +291,9 @@
 
 	发布于
 
-	<a href="/2020/05/02/git学习(一)—git基础/" itemprop="url">
-		<time datetime="2020-05-01T16:00:00.000Z" itemprop="datePublished">
-	  		2020-05-02
+	<a href="/2020/05/04/git学习(二)—git分支/" itemprop="url">
+		<time datetime="2020-05-03T16:00:00.000Z" itemprop="datePublished">
+	  		2020-05-04
 	  </time>
 	</a>
 	&nbsp;
@@ -309,8 +309,8 @@
 
 	更新于
 
-	<a href="/2020/05/02/git学习(一)—git基础/" itemprop="url">
-		<time datetime="2020-05-01T16:00:00.000Z" itemprop="dateUpdated">
+	<a href="/2020/05/04/git学习(二)—git分支/" itemprop="url">
+		<time datetime="2020-05-03T16:00:00.000Z" itemprop="dateUpdated">
 	  		2020-05-04
 	  </time>
 	</a> 
@@ -336,69 +336,26 @@
 	</div>
 
 	<div class="article-content" id="article-content">
-		<p>Git 是一个开源的分布式版本控制系统，可以有效、高速地处理从很小到非常大的项目版本管理。</p>
-<h3 id="1-获取Git仓库"><a href="#1-获取Git仓库" class="headerlink" title="1.获取Git仓库"></a>1.获取Git仓库</h3><p>通常有两种获取Git项目仓库的方式：</p>
-<ol>
-<li>将本地尚未进行版本控制的本地目录转换为Git仓库；</li>
-<li>从其他服务器上克隆一个已存在的Git仓库</li>
-</ol>
-<h4 id="在已存目录中初始化仓库"><a href="#在已存目录中初始化仓库" class="headerlink" title="在已存目录中初始化仓库"></a>在已存目录中初始化仓库</h4><p>具体步骤如下：</p>
-<p>（1）先切换到项目的根目录下</p>
-<p>（2）再执行<code>git init</code>命令</p>
-<p>该命令将创建一个名为<code>.git</code>的子目录，所有有关此项目的快照数据都存放在这里。</p>
-<h4 id="克隆现有仓库"><a href="#克隆现有仓库" class="headerlink" title="克隆现有仓库"></a>克隆现有仓库</h4><p>可以使用git clone的命令去拉取代码。</p>
-<p>可以采用以下两种方式进行拉取：</p>
-<p>（1）<code>git clone url</code></p>
-<p>​    url为仓库的传输地址。如果不指定分支时， 会拉取远程Git仓库中的每个文件的每个版本。</p>
-<p>（2）<code>git clone -b branchName url</code></p>
-<p>​    只拉取指定仓库中的指定的分支。</p>
-<h3 id="2-记录每次更新到仓库"><a href="#2-记录每次更新到仓库" class="headerlink" title="2.记录每次更新到仓库"></a>2.记录每次更新到仓库</h3><p>在工作目录下每个文件都不外乎这两种状态：<strong>已跟踪</strong>或<strong>未跟踪</strong>。已跟踪的文件是指那些被纳入了版本控制的文件，在上一次快照中有它们的记录，在工作一段时间后，它们的状态可能是未修改，已修改或者已放入暂存区。</p>
-<p>工作目录中除了已跟踪的文件外的其他文件都属于未跟踪的文件，它们既不属于上次快照的记录中，也没有被放入暂存区。初次克隆某个仓库时，工作目录中的所有文件都属于已跟踪的文件，并处于未修改状态。</p>
-<h4 id="查看工作区和暂存区文件的状态"><a href="#查看工作区和暂存区文件的状态" class="headerlink" title="查看工作区和暂存区文件的状态"></a>查看工作区和暂存区文件的状态</h4><p>使用<code>git status</code> 查看当前工作区和暂存区文件的状态。</p>
-<p>如果在克隆仓库后立即使用此命令，会看到类似这样的输出：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line">Your branch is up-to-date with &apos;origin/master&apos;.</span><br><span class="line">nothing to commit, working directory clean</span><br></pre></td></tr></table></figure>
-<h4 id="跟踪新文件和暂存已修改的文件"><a href="#跟踪新文件和暂存已修改的文件" class="headerlink" title="跟踪新文件和暂存已修改的文件"></a>跟踪新文件和暂存已修改的文件</h4><p>使用git add命令，可以跟踪新文件或者把已跟踪的文件存放到暂存区中。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">--提交单个未跟踪或者修改的文件--</span><br><span class="line">$ git add filename</span><br><span class="line">--提交所有未跟踪或者修改的文件--</span><br><span class="line">$ git add .</span><br><span class="line">$ git add all</span><br></pre></td></tr></table></figure>
-<h4 id="提交更新"><a href="#提交更新" class="headerlink" title="提交更新"></a>提交更新</h4><p>将暂存区的文件提交到版本库中</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git commit -m &quot;提交信息&quot;</span><br></pre></td></tr></table></figure>
-<h4 id="移除文件"><a href="#移除文件" class="headerlink" title="移除文件"></a>移除文件</h4><p>如果只想将文件从Git仓库中删除，但仍然希望保留在当前工作目录。</p>
-<p>可以使用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git rm --cached filename</span><br></pre></td></tr></table></figure>
-<p>如果急需要从跟踪文件中移除，还有在硬盘硬盘上删除该文件，则需要运行以下命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git rm filename</span><br></pre></td></tr></table></figure>
-<p>如果要删除之前修改过或已经放到暂存区的文件，则必须使用强制删除选项<code>-f</code>。</p>
-<h4 id="移动文件或重命名"><a href="#移动文件或重命名" class="headerlink" title="移动文件或重命名"></a>移动文件或重命名</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git mv file_from file_to</span><br></pre></td></tr></table></figure>
-<h3 id="3-查看提交历史"><a href="#3-查看提交历史" class="headerlink" title="3.查看提交历史"></a>3.查看提交历史</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git log</span><br></pre></td></tr></table></figure>
-<p><code>git log</code> 会按时间先后顺序列出所有的提交，最近的更新排在最上面。</p>
-<h3 id="4-撤销操作"><a href="#4-撤销操作" class="headerlink" title="4.撤销操作"></a>4.撤销操作</h3><h4 id="修改最后一次的commit提交"><a href="#修改最后一次的commit提交" class="headerlink" title="修改最后一次的commit提交"></a>修改最后一次的commit提交</h4><p>修改上一次提交，将两次提交合并为一次提交。</p>
-<h5 id="（1）修改commit的提交信息"><a href="#（1）修改commit的提交信息" class="headerlink" title="（1）修改commit的提交信息"></a>（1）修改commit的提交信息</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git commit --amend -m &quot;new commit message&quot;</span><br></pre></td></tr></table></figure>
-<p>可以将上次的提交信息修改为”new commit message”</p>
-<h5 id="（2）修改最后一次提交的文件"><a href="#（2）修改最后一次提交的文件" class="headerlink" title="（2）修改最后一次提交的文件"></a>（2）修改最后一次提交的文件</h5><p>当提交后，我们发现上次提交文件可能需要做一些修改才比较符合上次提交的信息，例如忘记了修改了某个文件。此时我们可以进行修改需要的文件，修改之后可以进行以下操作，可以达到目的：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git add .</span><br><span class="line">---(1)如果不需要修改提交信息---</span><br><span class="line">$ git commit --amend --no-edit</span><br><span class="line">---(2)如果需要修改提交信息---</span><br><span class="line">$ git commit --amend -m &quot;new commit message&quot;</span><br></pre></td></tr></table></figure>
-<p>会重新生成一个新的原来的提交替换原来的提交。</p>
-<h4 id="取消暂存的文件"><a href="#取消暂存的文件" class="headerlink" title="取消暂存的文件"></a>取消暂存的文件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git reset HEAD &lt;file&gt;</span><br></pre></td></tr></table></figure>
-<p>​    可以将暂存的文件变成修改未暂存的状态。</p>
-<h4 id="撤销对文件的修改"><a href="#撤销对文件的修改" class="headerlink" title="撤销对文件的修改"></a>撤销对文件的修改</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -- &lt;file&gt;</span><br></pre></td></tr></table></figure>
-<p>1.文件自从修改后还没放到暂存区，现在，撤销修改就回到和版本库一模一样的状态</p>
-<p>2.文件已经添加到暂存区后，又作了修改，现在，撤销修改就回到添加到暂存区后的状态</p>
-<p><strong>总之就会让这个文件回到最近一次git commit 或者 git add 时的状态。</strong></p>
-<h3 id="5-远程仓库的使用"><a href="#5-远程仓库的使用" class="headerlink" title="5.远程仓库的使用"></a>5.远程仓库的使用</h3><h4 id="查看远程仓库"><a href="#查看远程仓库" class="headerlink" title="查看远程仓库"></a>查看远程仓库</h4><p><code>git remote</code>会列出你指定的每个远程服务器的简写:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git remote</span><br><span class="line">origin</span><br></pre></td></tr></table></figure>
-<p> <code>git remote -v</code>会显示需要读写远程仓库使用的Git保存的简写与其对应的URL。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git remote -v</span><br><span class="line">origin  https://github.com/rad911/movie (fetch)</span><br><span class="line">origin  https://github.com/rad911/movie (push)</span><br></pre></td></tr></table></figure>
-<h4 id="添加远程仓库"><a href="#添加远程仓库" class="headerlink" title="添加远程仓库"></a>添加远程仓库</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 添加一个新的远程 Git 仓库，同时指定一个方便使用的简写，可以使用shortname代替url</span><br><span class="line">git remote add &lt;shortname&gt; &lt;url&gt;</span><br></pre></td></tr></table></figure>
-<h4 id="从远程仓库中抓取与拉取"><a href="#从远程仓库中抓取与拉取" class="headerlink" title="从远程仓库中抓取与拉取"></a>从远程仓库中抓取与拉取</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git fetch &lt;remote&gt;</span><br></pre></td></tr></table></figure>
-<p>这个命令会访问远程仓库，拉取你还没有的数据。</p>
-<p>如果你使用clone命令克隆了一个仓库，命令会自动将其添加为远程仓库并默认为”origin”为简写。所以，<code>git fetch origin</code>会抓取克隆后新推送的所有工作。git fetch命令只会将数据下载到你的本地仓库——它并不会自动合并或修改你当前的工作。当准备好时必须手动将其合并入你的工作。而git pull 会从最初克隆的服务器上抓取数据并自动尝试合并到当前所在的分支。</p>
-<h4 id="推送到远程仓库"><a href="#推送到远程仓库" class="headerlink" title="推送到远程仓库"></a>推送到远程仓库</h4><p>当你想分享你的项目时，可以使用 git push <remote> <branch>命令进行推送。</branch></remote></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 将master分支推送到origin服务器</span><br><span class="line">$ git push origin master</span><br></pre></td></tr></table></figure>
-<p>只有当你有所克隆服务器的写入权限，且之前没有人推送过时，这条命令才能生效。当你和其他人在同一时间克隆，他们先推送到上游然后你再推送到上游，你的推送就会毫无疑问地被拒绝。 你必须先抓取他们的工作并将其合并进你的工作后才能推送。</p>
-<h4 id="查看某个远程仓库"><a href="#查看某个远程仓库" class="headerlink" title="查看某个远程仓库"></a>查看某个远程仓库</h4><p>如果想要查看某一个远程仓库的更多信息，可以使用 git remote show <remotename> 命令。</remotename></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$ git remote show origin</span><br><span class="line">* remote origin</span><br><span class="line">  Fetch URL: https://github.com/rad911/movie</span><br><span class="line">  Push  URL: https://github.com/rad911/movie</span><br><span class="line">  HEAD branch: master</span><br><span class="line">  Remote branch:</span><br><span class="line">    master tracked</span><br><span class="line">  Local branch configured for &apos;git pull&apos;:</span><br><span class="line">    master merges with remote master</span><br><span class="line">  Local ref configured for &apos;git push&apos;:</span><br><span class="line">    master pushes to master (fast-forwardable)</span><br></pre></td></tr></table></figure>
-<h4 id="远程仓库的重命名与移除"><a href="#远程仓库的重命名与移除" class="headerlink" title="远程仓库的重命名与移除"></a>远程仓库的重命名与移除</h4><p>可以运行 git remote rename <oldname>  <newname>来<strong>修改</strong>一个远程仓库的简写名。</newname></oldname></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 将pb改名成paul</span><br><span class="line">$ git remote rename pb paul</span><br></pre></td></tr></table></figure>
-<p>使用git remote remove <remotename><strong>移除</strong>一个远程仓库</remotename></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 删除paul远程仓库</span><br><span class="line">$ git remote remove paul</span><br></pre></td></tr></table></figure>
+		<p>使用分支意味着你可以从开发主线上分离开来，然后在不影响主线的同时继续工作。</p>
+<h3 id="1-分支的创建"><a href="#1-分支的创建" class="headerlink" title="1. 分支的创建"></a>1. 分支的创建</h3><h4 id="分支的创建"><a href="#分支的创建" class="headerlink" title="分支的创建"></a>分支的创建</h4><p>它只是为你创建了一个可以移动的新的指针。</p>
+<p>例如当前处于master分支上，创建testing分支，你需要使用git branch命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git branch testing</span><br></pre></td></tr></table></figure>
+<p><img src="https://git-scm.com/book/en/v2/images/two-branches.png" alt></p>
+<p><strong>HEAD 指向当前所在的分支。HEAD随着当前分支的提交操作自动向前移动。</strong></p>
+<h4 id="分支的切换"><a href="#分支的切换" class="headerlink" title="分支的切换"></a>分支的切换</h4><p>使用git checkout就可以进行分支的切换。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 切换到testing分支</span><br><span class="line">$ git checkout testing</span><br></pre></td></tr></table></figure>
+<p>此时HEAD就指向了testing分支。在切换分支时，一定要注意你工作目录里的文件会被改变。 如果是切换到一个较旧的分支，你的工作目录会恢复到该分支最后一次提交时的样子。 </p>
+<p><img src="https://git-scm.com/book/en/v2/images/head-to-testing.png" alt></p>
+<h4 id="新建并切换分支"><a href="#新建并切换分支" class="headerlink" title="新建并切换分支"></a>新建并切换分支</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b branchName</span><br><span class="line">---等价于下面两条命令---</span><br><span class="line">git branch branchName</span><br><span class="line">git checkout branchName</span><br></pre></td></tr></table></figure>
+<h3 id="2-修改分支名称"><a href="#2-修改分支名称" class="headerlink" title="2.修改分支名称"></a>2.修改分支名称</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -m oldBranchName newBranchName</span><br></pre></td></tr></table></figure>
+<p>将oldBranchName命名为newBranchName。</p>
+<h3 id="3-删除分支名称"><a href="#3-删除分支名称" class="headerlink" title="3.删除分支名称"></a>3.删除分支名称</h3><p>不能在当前分支删除当前分支，必须切换到其他分支。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git branch -d branch1 branch2</span><br></pre></td></tr></table></figure>
+<p>一次性删除多个分支，分支名称用空格分隔。</p>
+<p>如果分支没有合并，git则会提示，可以使用下面的命令强制删除。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git branch -D branch1</span><br></pre></td></tr></table></figure>
+<h3 id="4-合并分支"><a href="#4-合并分支" class="headerlink" title="4.合并分支"></a>4.合并分支</h3><p>合并hotfix到当前分支中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git merge hotfix</span><br></pre></td></tr></table></figure>
 <p>参考：</p>
 <p><a href="https://git-scm.com/book/zh/v2" target="_blank" rel="noopener">https://git-scm.com/book/zh/v2</a></p>
 <p><a href="https://www.softwhy.com/qiduan/git_course/" target="_blank" rel="noopener">https://www.softwhy.com/qiduan/git_course/</a></p>
@@ -420,12 +377,8 @@
 	<span>
 		<a href="javascript: window.scrollTo(0, 0);">返回顶部</a>
 		
-			<a href="/2020/05/04/git学习(二)—git分支/" title="git学习(二)——git分支" rel="prev">
-				&laquo;上一篇
-			</a>
 		
-		
-			<a href="/2020/04/26/Optional/" title="Optional" rel="next">
+			<a href="/2020/05/02/git学习(一)—git基础/" title="git学习(一)——git基础" rel="next">
 				下一篇&raquo;
 			</a>
 			
@@ -446,24 +399,26 @@
 			
 					<li>
 						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2020/05/04/git学习(二)—git分支/" title="git学习(二)——git分支">
-								git学习(二)——git分支			
+							<a class="relate-post-title" href="/2020/05/02/git学习(一)—git基础/" title="git学习(一)——git基础">
+								git学习(一)——git基础			
 							</a>
 							<p class="relate-post-date">
 								<i class="fa fa-calendar"></i>
-								五月 4日, 2020				
+								五月 2日, 2020				
 							</p>
 							<p class="relate-post-content">
-								使用分支意味着你可以从开发主线上分离开来，然后在不影响主线的同时继续工作。
-1. 分支的创建分支的创建它只是为你创建了一个可以移动的新的指针。
-例如当前处于master分支上，创建testing分支，你需要使用git branch命令...
+								Git 是一个开源的分布式版本控制系统，可以有效、高速地处理从很小到非常大的项目版本管理。
+1.获取Git仓库通常有两种获取Git项目仓库的方式：
+
+将本地尚未进行版本控制的本地目录转换为Git仓库；
+从其他服务器上克隆一个已存在的G...
 							</p>
 						</div>
 
 						<div class="relate-post-cover">
-							<a href="/2020/05/04/git学习(二)—git分支/" title="git学习(二)——git分支">				
+							<a href="/2020/05/02/git学习(一)—git基础/" title="git学习(一)——git基础">				
 								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="git学习(二)——git分支">
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="git学习(一)——git基础">
 							</a>
 						</div>
 					</li>											
