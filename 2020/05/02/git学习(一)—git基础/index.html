@@ -311,7 +311,7 @@
 
 	<a href="/2020/05/02/git学习(一)—git基础/" itemprop="url">
 		<time datetime="2020-05-01T16:00:00.000Z" itemprop="dateUpdated">
-	  		2020-05-02
+	  		2020-05-04
 	  </time>
 	</a> 
 
@@ -368,6 +368,37 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git rm filename</span><br></pre></td></tr></table></figure>
 <p>如果要删除之前修改过或已经放到暂存区的文件，则必须使用强制删除选项<code>-f</code>。</p>
 <h4 id="移动文件或重命名"><a href="#移动文件或重命名" class="headerlink" title="移动文件或重命名"></a>移动文件或重命名</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git mv file_from file_to</span><br></pre></td></tr></table></figure>
+<h3 id="3-查看提交历史"><a href="#3-查看提交历史" class="headerlink" title="3.查看提交历史"></a>3.查看提交历史</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git log</span><br></pre></td></tr></table></figure>
+<p><code>git log</code> 会按时间先后顺序列出所有的提交，最近的更新排在最上面。</p>
+<h3 id="4-撤销操作"><a href="#4-撤销操作" class="headerlink" title="4.撤销操作"></a>4.撤销操作</h3><h4 id="修改最后一次的commit提交"><a href="#修改最后一次的commit提交" class="headerlink" title="修改最后一次的commit提交"></a>修改最后一次的commit提交</h4><p>修改上一次提交，将两次提交合并为一次提交。</p>
+<h5 id="（1）修改commit的提交信息"><a href="#（1）修改commit的提交信息" class="headerlink" title="（1）修改commit的提交信息"></a>（1）修改commit的提交信息</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git commit --amend -m &quot;new commit message&quot;</span><br></pre></td></tr></table></figure>
+<p>可以将上次的提交信息修改为”new commit message”</p>
+<h5 id="（2）修改最后一次提交的文件"><a href="#（2）修改最后一次提交的文件" class="headerlink" title="（2）修改最后一次提交的文件"></a>（2）修改最后一次提交的文件</h5><p>当提交后，我们发现上次提交文件可能需要做一些修改才比较符合上次提交的信息，例如忘记了修改了某个文件。此时我们可以进行修改需要的文件，修改之后可以进行以下操作，可以达到目的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git add .</span><br><span class="line">---(1)如果不需要修改提交信息---</span><br><span class="line">$ git commit --amend --no-edit</span><br><span class="line">---(2)如果需要修改提交信息---</span><br><span class="line">$ git commit --amend -m &quot;new commit message&quot;</span><br></pre></td></tr></table></figure>
+<p>会重新生成一个新的原来的提交替换原来的提交。</p>
+<h4 id="取消暂存的文件"><a href="#取消暂存的文件" class="headerlink" title="取消暂存的文件"></a>取消暂存的文件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git reset HEAD &lt;file&gt;</span><br></pre></td></tr></table></figure>
+<p>​    可以将暂存的文件变成修改未暂存的状态。</p>
+<h4 id="撤销对文件的修改"><a href="#撤销对文件的修改" class="headerlink" title="撤销对文件的修改"></a>撤销对文件的修改</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -- &lt;file&gt;</span><br></pre></td></tr></table></figure>
+<p>1.文件自从修改后还没放到暂存区，现在，撤销修改就回到和版本库一模一样的状态</p>
+<p>2.文件已经添加到暂存区后，又作了修改，现在，撤销修改就回到添加到暂存区后的状态</p>
+<p><strong>总之就会让这个文件回到最近一次git commit 或者 git add 时的状态。</strong></p>
+<h3 id="5-远程仓库的使用"><a href="#5-远程仓库的使用" class="headerlink" title="5.远程仓库的使用"></a>5.远程仓库的使用</h3><h4 id="查看远程仓库"><a href="#查看远程仓库" class="headerlink" title="查看远程仓库"></a>查看远程仓库</h4><p><code>git remote</code>会列出你指定的每个远程服务器的简写:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git remote</span><br><span class="line">origin</span><br></pre></td></tr></table></figure>
+<p> <code>git remote -v</code>会显示需要读写远程仓库使用的Git保存的简写与其对应的URL。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git remote -v</span><br><span class="line">origin  https://github.com/rad911/movie (fetch)</span><br><span class="line">origin  https://github.com/rad911/movie (push)</span><br></pre></td></tr></table></figure>
+<h4 id="添加远程仓库"><a href="#添加远程仓库" class="headerlink" title="添加远程仓库"></a>添加远程仓库</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 添加一个新的远程 Git 仓库，同时指定一个方便使用的简写，可以使用shortname代替url</span><br><span class="line">git remote add &lt;shortname&gt; &lt;url&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="从远程仓库中抓取与拉取"><a href="#从远程仓库中抓取与拉取" class="headerlink" title="从远程仓库中抓取与拉取"></a>从远程仓库中抓取与拉取</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git fetch &lt;remote&gt;</span><br></pre></td></tr></table></figure>
+<p>这个命令会访问远程仓库，拉取你还没有的数据。</p>
+<p>如果你使用clone命令克隆了一个仓库，命令会自动将其添加为远程仓库并默认为”origin”为简写。所以，<code>git fetch origin</code>会抓取克隆后新推送的所有工作。git fetch命令只会将数据下载到你的本地仓库——它并不会自动合并或修改你当前的工作。当准备好时必须手动将其合并入你的工作。而git pull 会从最初克隆的服务器上抓取数据并自动尝试合并到当前所在的分支。</p>
+<h4 id="推送到远程仓库"><a href="#推送到远程仓库" class="headerlink" title="推送到远程仓库"></a>推送到远程仓库</h4><p>当你想分享你的项目时，可以使用 git push <remote> <branch>命令进行推送。</branch></remote></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 将master分支推送到origin服务器</span><br><span class="line">$ git push origin master</span><br></pre></td></tr></table></figure>
+<p>只有当你有所克隆服务器的写入权限，且之前没有人推送过时，这条命令才能生效。当你和其他人在同一时间克隆，他们先推送到上游然后你再推送到上游，你的推送就会毫无疑问地被拒绝。 你必须先抓取他们的工作并将其合并进你的工作后才能推送。</p>
+<h4 id="查看某个远程仓库"><a href="#查看某个远程仓库" class="headerlink" title="查看某个远程仓库"></a>查看某个远程仓库</h4><p>如果想要查看某一个远程仓库的更多信息，可以使用 git remote show <remotename> 命令。</remotename></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$ git remote show origin</span><br><span class="line">* remote origin</span><br><span class="line">  Fetch URL: https://github.com/rad911/movie</span><br><span class="line">  Push  URL: https://github.com/rad911/movie</span><br><span class="line">  HEAD branch: master</span><br><span class="line">  Remote branch:</span><br><span class="line">    master tracked</span><br><span class="line">  Local branch configured for &apos;git pull&apos;:</span><br><span class="line">    master merges with remote master</span><br><span class="line">  Local ref configured for &apos;git push&apos;:</span><br><span class="line">    master pushes to master (fast-forwardable)</span><br></pre></td></tr></table></figure>
+<h4 id="远程仓库的重命名与移除"><a href="#远程仓库的重命名与移除" class="headerlink" title="远程仓库的重命名与移除"></a>远程仓库的重命名与移除</h4><p>可以运行 git remote rename <oldname>  <newname>来<strong>修改</strong>一个远程仓库的简写名。</newname></oldname></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 将pb改名成paul</span><br><span class="line">$ git remote rename pb paul</span><br></pre></td></tr></table></figure>
+<p>使用git remote remove <remotename><strong>移除</strong>一个远程仓库</remotename></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 删除paul远程仓库</span><br><span class="line">$ git remote remove paul</span><br></pre></td></tr></table></figure>
 <p>参考：</p>
 <p><a href="https://git-scm.com/book/zh/v2" target="_blank" rel="noopener">https://git-scm.com/book/zh/v2</a></p>
 <p><a href="https://www.softwhy.com/qiduan/git_course/" target="_blank" rel="noopener">https://www.softwhy.com/qiduan/git_course/</a></p>
@@ -435,6 +466,29 @@
 			
 					<li>
 						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2020/04/21/Stream/" title="Stream">
+								Stream			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								四月 21日, 2020				
+							</p>
+							<p class="relate-post-content">
+								Java 8 中的 Stream 是对集合对象功能的增强，它专注于对集合对象进行各种非常便利、高效的聚合操作或者大批量数据操作。Stream API（java.util.stream.*）提供了一种高效且易于使用的处理数据的方式。使用...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2020/04/21/Stream/" title="Stream">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="Stream">
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
 							<a class="relate-post-title" href="/2020/04/21/lambda表达式/" title="Lambda表达式">
 								Lambda表达式			
 							</a>
@@ -453,29 +507,6 @@
 							<a href="/2020/04/21/lambda表达式/" title="Lambda表达式">				
 								
 								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="Lambda表达式">
-							</a>
-						</div>
-					</li>											
-			
-			
-					<li>
-						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2020/04/21/Stream/" title="Stream">
-								Stream			
-							</a>
-							<p class="relate-post-date">
-								<i class="fa fa-calendar"></i>
-								四月 21日, 2020				
-							</p>
-							<p class="relate-post-content">
-								Java 8 中的 Stream 是对集合对象功能的增强，它专注于对集合对象进行各种非常便利、高效的聚合操作或者大批量数据操作。Stream API（java.util.stream.*）提供了一种高效且易于使用的处理数据的方式。使用...
-							</p>
-						</div>
-
-						<div class="relate-post-cover">
-							<a href="/2020/04/21/Stream/" title="Stream">				
-								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="Stream">
 							</a>
 						</div>
 					</li>											
