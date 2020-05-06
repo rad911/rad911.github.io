@@ -311,7 +311,7 @@
 
 	<a href="/2020/05/04/git学习(二)—git分支/" itemprop="url">
 		<time datetime="2020-05-03T16:00:00.000Z" itemprop="dateUpdated">
-	  		2020-05-04
+	  		2020-05-06
 	  </time>
 	</a> 
 
@@ -356,9 +356,29 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git branch -D branch1</span><br></pre></td></tr></table></figure>
 <h3 id="4-合并分支"><a href="#4-合并分支" class="headerlink" title="4.合并分支"></a>4.合并分支</h3><p>合并hotfix到当前分支中：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git merge hotfix</span><br></pre></td></tr></table></figure>
+<h3 id="5-merge和rebase"><a href="#5-merge和rebase" class="headerlink" title="5.merge和rebase"></a>5.merge和rebase</h3><p>场景：</p>
+<p>​        当我们在项目开发时，一般会基于master分支，去创建新的分支进行开发。此时同事A需要去优化数据爬取的功能，他基于master创建了dev分支，进行优化工作，在开发完成之后，他发现master分支有了新的提交，即同事B进行了文件存储的优化。此时同事A需要同事B开发的优化文件存储的功能。</p>
+<p><img src="http://m.qpic.cn/psc?/V11zqcbA1nA4Jz/C5I6tuQmWty2LHkfPkGvPnISHIioVlT23s7wXH58C9qvmWTR2nsfKwdwcSqbItbyQs3mralDzjQR1wM.SFCgsw!!/b&amp;bo=tgFbAbYBWwEDCSw!&amp;rf=viewer_4" alt></p>
+<p>如果此时采用merge的话，结果会如下图所示：</p>
+<p><img src="http://m.qpic.cn/psc?/V11zqcbA1nA4Jz/eDPUD.WZD3qAEkJwtXE4NXyfhuVVTKHx8rAJVORIyHcfGfEms1w3WP4TX58wklmUqwaj6eK5OHNn74MymqK02oTXr38mQ3B9Eo070*u0jfs!/b&amp;bo=twH6AbcB.gEDGTw!&amp;rf=viewer_4" alt></p>
+<p>但是同事A想要使提交记录更加简洁，不想出现提交记录分叉时。此时可以使用rebase。</p>
+<p><img src="http://m.qpic.cn/psc?/V11zqcbA1nA4Jz/eDPUD.WZD3qAEkJwtXE4NaLXOh0y6NY8iBmAkdWxyx5Tlkyor1OCjGND82SxOMTolgaMUJ4SBRlCqKpvuj5FbkJrNoU73eTxcMuq66kILpI!/b&amp;bo=ogEvAqIBLwIDGTw!&amp;rf=viewer_4" alt></p>
+<p><strong>原理：</strong></p>
+<p>​    “git rebase 分支名称”命令会把你的”dev”分支里的每个提交(commit)取消掉，并且把它们临时 保存为补丁(patch)(这些补丁放到”.git/rebase”目录中),然后把”dev”分支更新为最新的”master”分支，最后把保存的这些补丁应用到”dev”分支上。</p>
+<p>具体代码如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">---如果是远端的master-----</span><br><span class="line"> git fetch origin</span><br><span class="line"> git checkout dev</span><br><span class="line"> git rebase origin/master</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>解决冲突：</p>
+<p>在rebase的过程中，也许会出现冲突(conflict). 在这种情况，Git会停止rebase并会让你去解决 冲突；在解决完冲突后，用”git-add”命令去更新这些内容的索引(index), 然后，你无需执行 git-commit,只要执行:</p>
+<p>$ git rebase –continue</p>
+<p>这样git会继续应用(apply)余下的补丁。</p>
+<p>在任何时候，你可以用–abort参数来终止rebase的行动，并且”dev” 分支会回到rebase开始前的状态。</p>
+<p>$ git rebase –abort</p>
+</blockquote>
 <p>参考：</p>
 <p><a href="https://git-scm.com/book/zh/v2" target="_blank" rel="noopener">https://git-scm.com/book/zh/v2</a></p>
 <p><a href="https://www.softwhy.com/qiduan/git_course/" target="_blank" rel="noopener">https://www.softwhy.com/qiduan/git_course/</a></p>
+<p><a href="https://www.cnblogs.com/pluto-yang/p/9723771.html" target="_blank" rel="noopener">https://www.cnblogs.com/pluto-yang/p/9723771.html</a></p>
 	
 	</div>
 	
