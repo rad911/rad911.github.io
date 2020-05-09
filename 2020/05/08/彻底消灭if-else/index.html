@@ -1,0 +1,948 @@
+<!--
+	作者：Sariay
+	时间：2018-09-25
+	描述：There may be a bug, but don't worry, QiLing(器灵) says that it can work normally!
+-->
+<!DOCTYPE html>
+<html class="html-loading">
+		
+
+<head><meta name="generator" content="Hexo 3.8.0">
+	<meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <title>
+    
+      彻底消灭if-else | Rad的博客
+    
+  </title>
+  <meta name="author" content="Rad">
+  <meta name="keywords" content>
+  <meta name="description" content>
+	<!-- favicon -->
+  <link rel="shortcut icon" href="/img/favicon.ico">
+
+  <!-- css -->
+  <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/Annie.css">
+  
+  <!-- jquery -->
+	<script src="/js/jquery.min.js"></script>
+
+  <!-- leancloud -->
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+<script src="/js/leancloud.js"></script>
+</head>
+	<body>
+		<!-- Preloader -->
+
+	<div id="preloader">
+		<div class="pre-container">
+			
+				<div class="spinner">
+					<div class="double-bounce1"></div>
+					<div class="double-bounce2"></div>
+				</div>
+						
+		</div>
+	</div>
+
+
+<!-- header -->
+<header class="fixbackground" data-img-mode="normal" data-normal-src="/img/1.jpg" data-random-max="110" data-random-src="https://sariay.github.io/Random-img/">
+	<div class="mask">
+		<!-- Logo and navigation -->
+		<div class="h-header">
+			<div id="logo">
+				<a href="/">
+						
+						<img src="/img/logo.png" alt="Logo">
+					
+				</a>
+			</div>
+			
+			<div id="navigation-show">
+				<ul>
+	
+		<li class="menu-home">
+			<a href="/" class="menu-item-home">主页</a>
+		</li>
+	
+		<li class="menu-archive">
+			<a href="/archives" class="menu-item-archive">归档</a>
+		</li>
+	
+		<li class="menu-categories">
+			<a href="/categories" class="menu-item-categories">分类</a>
+		</li>
+	
+		<li class="menu-tags">
+			<a href="/tags" class="menu-item-tags">标签</a>
+		</li>
+	
+		<li class="menu-about">
+			<a href="/about" class="menu-item-about">关于</a>
+		</li>
+	
+		<li class="menu-gallery">
+			<a href="/gallery" class="menu-item-gallery">相册</a>
+		</li>
+	
+
+	
+</ul>
+			</div>				
+		</div>
+
+		<!-- motto -->
+		<div class="h-body">	
+			
+				<p class="motto"></p>
+			
+		</div>
+		
+		<!-- others: such as time... -->			
+		<div class="h-footer">
+			<a href="javascript:;" id="read-more"><i class="fa fa-angle-double-down" aria-hidden="true"></i>
+			</a>
+
+			
+				<!-- 
+	This is only a demo, please go to "https://time.is" to set your city time! 
+-->
+<style type="text/css">
+	.header-date {
+		font-size: 1.6rem;
+		color: #fff;
+		position: absolute;
+		bottom: 5px;
+		right: 1rem;
+		writing-mode: tb-rl;
+	}	
+	
+	.header-date a {
+		border-bottom: none;
+	}
+
+	@media only screen and (max-width: 768 ) {
+		.header-date {
+			font-size: 1rem;
+		}			
+	}
+</style>
+<div class="header-date">
+	<a href="https://time.is/Beijing" id="time_is_link" rel="nofollow"></a>
+	<span id="Beijing_z43d"></span>
+</div>
+<script src="//widget.time.is/zh.js"></script>
+<script>
+	time_is_widget.init({
+		Beijing_z43d:{
+			template:"DATE", 
+			date_format:"year年 monthname dnum日"
+		}
+	});
+</script>
+			
+		</div>
+	</div>
+</header>
+
+<div id="navigation-hide">
+	<!-- Progress bar -->
+	<div id="progress-bar"></div>
+
+	<!-- Progress percent -->
+	<div id="progress-percentage"><h1>0.0%</h1></div>
+
+	<div class="toc-switch"><span class="switch-button">目录</span></div>
+
+	<!-- Page title -->
+	<p>
+		
+			当前文章&nbsp;:&nbsp;《彻底消灭if-else》
+		
+	</p>
+
+	<!-- Nav trigger for navigation-H-->
+	<a class="nav-trigger"><span></span></a>
+</div>
+
+<!-- Navigation in div(id="navigation-H") -->
+<nav class="nav-container" id="cd-nav">
+	<div class="nav-header">
+		<h3>Navigation</h3>
+		<a href="javascript:;" class="nav-close"></a>
+	</div>
+	<div class="nav-body">
+		<ul>
+	
+		<li class="menu-home">
+			<a href="/" class="menu-item-home">主页</a>
+		</li>
+	
+		<li class="menu-archive">
+			<a href="/archives" class="menu-item-archive">归档</a>
+		</li>
+	
+		<li class="menu-categories">
+			<a href="/categories" class="menu-item-categories">分类</a>
+		</li>
+	
+		<li class="menu-tags">
+			<a href="/tags" class="menu-item-tags">标签</a>
+		</li>
+	
+		<li class="menu-about">
+			<a href="/about" class="menu-item-about">关于</a>
+		</li>
+	
+		<li class="menu-gallery">
+			<a href="/gallery" class="menu-item-gallery">相册</a>
+		</li>
+	
+
+	
+</ul>
+	</div>
+	<div class="nav-footer">
+		<ul>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-github"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-weibo"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-pinterest"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-instagram"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-twitter"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="/atom.xml" target="_blank">
+				<i class="fa fa-rss"></i>
+			</a>
+		</li>
+			
+</ul>
+
+	</div>
+</nav>
+			
+		<!--main-->
+		<main>
+			<!--
+	时间：2018-11-17
+	描述：
+		插件名称：katelog.min.js
+		插件作者：KELEN
+		插件来源: https://github.com/KELEN/katelog
+-->
+
+	
+		<div class="layout-toc">
+			<div id="layout-toc">
+				<div class="k-catelog-list" id="catelog-list" data-title="文章目录"></div>
+			</div>
+		</div>
+
+		
+		<script src="/plugin/toc/katelog.min.js"></script>
+
+		
+	 
+
+<div class="layout-post">
+	<div id="layout-post">
+	<div class="article-title">
+		<i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+		
+	<a href="/2020/05/08/彻底消灭if-else/" itemprop="url">
+		彻底消灭if-else
+	</a>
+
+	</div>
+
+	<div class="article-meta">
+		<span>
+			<i class="fa fa-calendar"></i>
+			
+
+
+	发布于
+
+	<a href="/2020/05/08/彻底消灭if-else/" itemprop="url">
+		<time datetime="2020-05-07T16:00:00.000Z" itemprop="datePublished">
+	  		2020-05-08
+	  </time>
+	</a>
+	&nbsp;
+
+
+
+
+
+			
+
+
+
+
+	更新于
+
+	<a href="/2020/05/08/彻底消灭if-else/" itemprop="url">
+		<time datetime="2020-05-07T16:00:00.000Z" itemprop="dateUpdated">
+	  		2020-05-09
+	  </time>
+	</a> 
+
+
+
+		</span>
+		<span>
+			<i class="fa fa-tags"></i>
+			
+	
+		<a href="/tags/Java/" class=" ">
+			Java
+		</a>
+	
+		
+		</span>
+		
+		
+
+
+
+	</div>
+
+	<div class="article-content" id="article-content">
+		<p>如果if-else分支比较多，无论是阅读还是维护都比较困难，本文将介绍优化if-else代码的八种方案。</p>
+<h3 id="1-尽可能减少if-else"><a href="#1-尽可能减少if-else" class="headerlink" title="1.尽可能减少if-else"></a>1.尽可能减少if-else</h3><h4 id="方案1：提前返回"><a href="#方案1：提前返回" class="headerlink" title="方案1：提前返回"></a>方案1：提前返回</h4><blockquote>
+<p>如果if-else代码块中包含return语句，可以考虑提前返回，把多余的else去掉。</p>
+</blockquote>
+<p><strong>优化前：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(condition) &#123;</span><br><span class="line">    <span class="comment">// doSomething</span></span><br><span class="line">&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> Object;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>优化后:</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(!condition)&#123;</span><br><span class="line">	<span class="keyword">return</span> Object;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// doSomething</span></span><br></pre></td></tr></table></figure>
+<p>将doSomething的长代码放入到正常的流程中，同时也减少了else分支。</p>
+<h4 id="方案2：尽可能合并条件表达式"><a href="#方案2：尽可能合并条件表达式" class="headerlink" title="方案2：尽可能合并条件表达式"></a>方案2：尽可能合并条件表达式</h4><blockquote>
+<p>如果有一系列条件返回一样的结果，可以将它们合并为一个条件表达式，让逻辑更加清晰。</p>
+</blockquote>
+<p><strong>优化前：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">getVipDiscount</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(age&lt;<span class="number">18</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0.8</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(<span class="string">"深圳"</span>.equals(city)) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0.8</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(isStudent) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0.8</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// doSomething</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>优化后：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">getVipDiscount</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(age&lt;<span class="number">18</span> || <span class="string">"深圳"</span>.equals(city)||isStudent) &#123;</span><br><span class="line">	 	<span class="keyword">return</span> <span class="number">0.8</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// doSomething</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-减少if-else内的代码"><a href="#2-减少if-else内的代码" class="headerlink" title="2. 减少if-else内的代码"></a>2. 减少if-else内的代码</h3><h4 id="方案3：将较长的代码放入到正常流程中"><a href="#方案3：将较长的代码放入到正常流程中" class="headerlink" title="方案3：将较长的代码放入到正常流程中"></a>方案3：将较长的代码放入到正常流程中</h4><blockquote>
+<p>将if-else分支中较长的代码放入到正常的流程中，减少if-else的长度，方便阅读代码</p>
+</blockquote>
+<p><strong>优化前：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">getAdjustedCapital</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(_capital &lt;= <span class="number">0.0</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0.0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(_intRate &gt; <span class="number">0</span> &amp;&amp; _duration &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="comment">// doSomething</span></span><br><span class="line">        <span class="keyword">return</span> value;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> defaultValue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>优化后：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">getAdjustedCapital</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(_capital &lt;= <span class="number">0.0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0.0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(_intRate &lt;= <span class="number">0</span> || _duration &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> defaultValue;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// doSomething</span></span><br><span class="line">    <span class="keyword">return</span> value;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3-替代if-else"><a href="#3-替代if-else" class="headerlink" title="3.替代if-else"></a>3.替代if-else</h3><h4 id="方案4：使用三目运算符"><a href="#方案4：使用三目运算符" class="headerlink" title="方案4：使用三目运算符"></a>方案4：使用三目运算符</h4><p><strong>优化前：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> price;</span><br><span class="line"><span class="keyword">if</span>(condition) &#123;</span><br><span class="line">    price = <span class="number">80</span>;</span><br><span class="line">&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">    price = <span class="number">100</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>优化后：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> price = condition ? <span class="number">80</span> : <span class="number">100</span>;</span><br></pre></td></tr></table></figure>
+<h4 id="方案5：使用Optional"><a href="#方案5：使用Optional" class="headerlink" title="方案5：使用Optional"></a>方案5：使用Optional</h4><blockquote>
+<p>有时候if-else比较多，是因为非空导致的，这时候可以使用Java 8的Optional进行优化。</p>
+</blockquote>
+<p><strong>优化前：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">String str = <span class="string">"hello world"</span>;</span><br><span class="line"><span class="keyword">if</span>(str!=<span class="keyword">null</span>) &#123;</span><br><span class="line">    System.out.println(str);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"Null"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>优化后：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Optional&lt;String&gt; strOptional = Optional.of(<span class="string">"hello world"</span>);</span><br><span class="line">strOptional.ifPresentOrElse(System.out::println, ()-&gt;System.out.print(<span class="string">"Null"</span>));</span><br></pre></td></tr></table></figure>
+<h4 id="方案6：使用枚举"><a href="#方案6：使用枚举" class="headerlink" title="方案6：使用枚举"></a>方案6：使用枚举</h4><p><strong>优化前：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">String OrderStatusDes;</span><br><span class="line"><span class="keyword">if</span>(orderStatus == <span class="number">0</span>)&#123;</span><br><span class="line">    OrderStatusDes = <span class="string">"订单未支付"</span>;</span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>(orderStatus == <span class="number">1</span>)&#123;</span><br><span class="line">    OrderStatusDes = <span class="string">"订单已支付"</span>;</span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>(orderStatus == <span class="number">2</span>)&#123;</span><br><span class="line">    OrderStatusDes = <span class="string">"已发货"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>优化后：</strong></p>
+<p>先定义一个枚举</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> OrderStatusEnum&#123;</span><br><span class="line">    UN_PAID(<span class="number">0</span>,<span class="string">"订单未支付"</span>),PAIDED(<span class="number">1</span>,<span class="string">"订单已支付"</span>),SENDED(<span class="number">2</span>,<span class="string">"已发货"</span>),; </span><br><span class="line"> </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> index; </span><br><span class="line">    <span class="keyword">private</span> String desc; </span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getIndex</span><span class="params">()</span> </span>&#123; </span><br><span class="line">        <span class="keyword">return</span> index; </span><br><span class="line">    &#125; </span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getDesc</span><span class="params">()</span> </span>&#123; </span><br><span class="line">        <span class="keyword">return</span> desc; </span><br><span class="line">    &#125; </span><br><span class="line"> </span><br><span class="line">    OrderStatusEnum(<span class="keyword">int</span> index, String desc)&#123; </span><br><span class="line">        <span class="keyword">this</span>.index = index; </span><br><span class="line">        <span class="keyword">this</span>.desc =desc; </span><br><span class="line">    &#125; </span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> OrderStatusEnum <span class="title">of</span><span class="params">(<span class="keyword">int</span> orderStatus)</span> </span>&#123; </span><br><span class="line">        <span class="keyword">for</span> (OrderStatusEnum temp : OrderStatusEnum.values()) &#123; </span><br><span class="line">            <span class="keyword">if</span> (temp.getIndex() == orderStatus) &#123; </span><br><span class="line">                <span class="keyword">return</span> temp; </span><br><span class="line">            &#125; </span><br><span class="line">        &#125; </span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>; </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>有了枚举之后，以上 if-else 逻辑分支，可以优化为一行代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String OrderStatusDes = OrderStatusEnum.0f(orderStatus).getDesc();</span><br></pre></td></tr></table></figure>
+<h4 id="方案7：表驱动法"><a href="#方案7：表驱动法" class="headerlink" title="方案7：表驱动法"></a>方案7：表驱动法</h4><blockquote>
+<p>表驱动法，又称之为表驱动、表驱动方法。表驱动方法是一种使你可以在表中查找信息，而不必用很多的逻辑语句(if 或 case)来把它们找出来的方法。</p>
+</blockquote>
+<p>以下的 demo，把 map 抽象成表，在 map 中查找信息，而省去不必要的逻辑语句。</p>
+<p><strong>优化前：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (param.equals(value1)) &#123; </span><br><span class="line">    doAction1(someParams); </span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (param.equals(value2)) &#123; </span><br><span class="line">    doAction2(someParams); </span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (param.equals(value3)) &#123; </span><br><span class="line">    doAction3(someParams); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>优化后：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;?, Function&lt;?&gt; action&gt; actionMappings = <span class="keyword">new</span> HashMap&lt;&gt;(); <span class="comment">// 这里泛型 ? 是为方便演示，实际可替换为你需要的类型 </span></span><br><span class="line"> </span><br><span class="line"><span class="comment">// 初始化 </span></span><br><span class="line">actionMappings.put(value1, (someParams) -&gt; &#123; doAction1(someParams)&#125;); </span><br><span class="line">actionMappings.put(value2, (someParams) -&gt; &#123; doAction2(someParams)&#125;); </span><br><span class="line">actionMappings.put(value3, (someParams) -&gt; &#123; doAction3(someParams)&#125;); </span><br><span class="line"> </span><br><span class="line"><span class="comment">// 省略多余逻辑语句 </span></span><br><span class="line">actionMappings.get(param).apply(someParams);</span><br></pre></td></tr></table></figure>
+<h4 id="方案8：策略模式-工厂方式"><a href="#方案8：策略模式-工厂方式" class="headerlink" title="方案8：策略模式+工厂方式"></a>方案8：策略模式+工厂方式</h4><p><strong>优化前：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">String medalType = <span class="string">"guest"</span>; </span><br><span class="line"><span class="keyword">if</span> (<span class="string">"guest"</span>.equals(medalType)) &#123; </span><br><span class="line">    System.out.println(<span class="string">"嘉宾勋章"</span>); </span><br><span class="line"> &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="string">"vip"</span>.equals(medalType)) &#123; </span><br><span class="line">    System.out.println(<span class="string">"会员勋章"</span>); </span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="string">"guard"</span>.equals(medalType)) &#123; </span><br><span class="line">    System.out.println(<span class="string">"展示守护勋章"</span>); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>优化后：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//勋章接口 </span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">IMedalService</span> </span>&#123; </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">showMedal</span><span class="params">()</span></span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//守护勋章策略实现类 </span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GuardMedalServiceImpl</span> <span class="keyword">implements</span> <span class="title">IMedalService</span> </span>&#123; </span><br><span class="line">    <span class="meta">@Override</span> </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">showMedal</span><span class="params">()</span> </span>&#123; </span><br><span class="line">        System.out.println(<span class="string">"展示守护勋章"</span>); </span><br><span class="line">    &#125; </span><br><span class="line">&#125; </span><br><span class="line"><span class="comment">//嘉宾勋章策略实现类 </span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GuestMedalServiceImpl</span> <span class="keyword">implements</span> <span class="title">IMedalService</span> </span>&#123; </span><br><span class="line">    <span class="meta">@Override</span> </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">showMedal</span><span class="params">()</span> </span>&#123; </span><br><span class="line">        System.out.println(<span class="string">"嘉宾勋章"</span>); </span><br><span class="line">    &#125; </span><br><span class="line">&#125; </span><br><span class="line"><span class="comment">//VIP勋章策略实现类 </span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">VipMedalServiceImpl</span> <span class="keyword">implements</span> <span class="title">IMedalService</span> </span>&#123; </span><br><span class="line">    <span class="meta">@Override</span> </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">showMedal</span><span class="params">()</span> </span>&#123; </span><br><span class="line">        System.out.println(<span class="string">"会员勋章"</span>); </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>接下来，我们再定义策略工厂类，用来管理这些勋章实现策略类，如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//勋章服务工产类 </span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MedalServicesFactory</span> </span>&#123; </span><br><span class="line"> </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Map&lt;String, IMedalService&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;(); </span><br><span class="line">    <span class="keyword">static</span> &#123; </span><br><span class="line">        map.put(<span class="string">"guard"</span>, <span class="keyword">new</span> GuardMedalServiceImpl()); </span><br><span class="line">        map.put(<span class="string">"vip"</span>, <span class="keyword">new</span> VipMedalServiceImpl()); </span><br><span class="line">        map.put(<span class="string">"guest"</span>, <span class="keyword">new</span> GuestMedalServiceImpl()); </span><br><span class="line">    &#125; </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> IMedalService <span class="title">getMedalService</span><span class="params">(String medalType)</span> </span>&#123; </span><br><span class="line">        <span class="keyword">return</span> map.get(medalType); </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用了策略+工厂模式之后：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123; </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123; </span><br><span class="line">        String medalType = <span class="string">"guest"</span>; </span><br><span class="line">        IMedalService medalService = MedalServicesFactory.getMedalService(medalType); </span><br><span class="line">        medalService.showMedal(); </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>参考：</p>
+<p><a href="https://developer.51cto.com/art/202003/612278.htm" target="_blank" rel="noopener">https://developer.51cto.com/art/202003/612278.htm</a></p>
+	
+	</div>
+	
+	<div id="current-post-cover" data-scr="/img/cart_cover.jpg"></div>
+
+	<!-- relate post, comment...-->
+	<div class="investment-container">
+		<div class="investment-header">
+			<div class="investment-title-1">
+				<div class="on">相关文章</div>
+				<div>评论</div>
+				<div>分享</div>
+			</div>
+			<div class="investment-title-2">	            
+				
+	<span>
+		<a href="javascript: window.scrollTo(0, 0);">返回顶部</a>
+		
+		
+			<a href="/2020/05/04/git学习(二)—git分支/" title="git学习(二)——git分支" rel="next">
+				下一篇&raquo;
+			</a>
+			
+	</span>
+
+
+      		
+			</div>	
+		</div>
+		
+		<div class="investment-content">
+			<div class="investment-content-list">
+				
+
+<div class="relate-post">
+	
+		<ul>
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2020/05/04/git学习(二)—git分支/" title="git学习(二)——git分支">
+								git学习(二)——git分支			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								五月 4日, 2020				
+							</p>
+							<p class="relate-post-content">
+								使用分支意味着你可以从开发主线上分离开来，然后在不影响主线的同时继续工作。
+1. 分支的创建分支的创建它只是为你创建了一个可以移动的新的指针。
+例如当前处于master分支上，创建testing分支，你需要使用git branch命令...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2020/05/04/git学习(二)—git分支/" title="git学习(二)——git分支">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="git学习(二)——git分支">
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2020/05/02/git学习(一)—git基础/" title="git学习(一)——git基础">
+								git学习(一)——git基础			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								五月 2日, 2020				
+							</p>
+							<p class="relate-post-content">
+								Git 是一个开源的分布式版本控制系统，可以有效、高速地处理从很小到非常大的项目版本管理。
+1.获取Git仓库通常有两种获取Git项目仓库的方式：
+
+将本地尚未进行版本控制的本地目录转换为Git仓库；
+从其他服务器上克隆一个已存在的G...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2020/05/02/git学习(一)—git基础/" title="git学习(一)——git基础">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="git学习(一)——git基础">
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2020/04/26/Optional/" title="Optional">
+								Optional			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								四月 26日, 2020				
+							</p>
+							<p class="relate-post-content">
+								Optional 类 (java.util.Option)是一个容器类，是Java8为了解决null值判断问题。本质上，这是一个包含有可选值的包装类，这意味着Optional类既可以含有对象也可以为空。
+创建Optional实例1.声...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2020/04/26/Optional/" title="Optional">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="Optional">
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2020/04/21/lambda表达式/" title="Lambda表达式">
+								Lambda表达式			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								四月 21日, 2020				
+							</p>
+							<p class="relate-post-content">
+								Lambda是一个匿名函数，我们可以理解为是一段可以传递的代码，可以写出更简洁、更灵活的代码。作为一种更紧凑的代码风格，使Java语言的表达能力得到提升。
+函数式接口Lambda表示式需要函数式接口的支持。
+函数式接口：接口只有一个抽...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2020/04/21/lambda表达式/" title="Lambda表达式">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="Lambda表达式">
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2020/04/21/Stream/" title="Stream">
+								Stream			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								四月 21日, 2020				
+							</p>
+							<p class="relate-post-content">
+								Java 8 中的 Stream 是对集合对象功能的增强，它专注于对集合对象进行各种非常便利、高效的聚合操作或者大批量数据操作。Stream API（java.util.stream.*）提供了一种高效且易于使用的处理数据的方式。使用...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2020/04/21/Stream/" title="Stream">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="Stream">
+							</a>
+						</div>
+					</li>											
+			
+			
+		</ul>
+	
+</div>	
+			</div>
+			<div class="investment-content-list">
+				<div class="layout-comment">
+
+	
+
+		
+
+			<!-- gitalk comment -->
+			<!-- show gitalk comment -->
+<div id="gitalk-container"></div>
+
+<!-- gitalk`s css & js -->
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<link rel="stylesheet" href="/css/comment.css">
+<script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<script type="text/javascript">
+	//Thanks O-R
+	//https://github.com/gitalk/gitalk/issues/102#issuecomment-382970552
+	//去除尾部匹配正则数组的字符串  
+	//Remove redundant characters
+	String.prototype.trimEnd = function(regStr) {
+		var result = this;
+		if(regStr == undefined || regStr == null || regStr == "") {
+			return result;
+		}
+		var array = regStr.split(',');
+
+		if(array.length > 0) {
+
+			var c = array.shift();
+			var str = this;
+			var i = str.length;
+			var rg = new RegExp(c);
+			var matchArr = str.match(rg);
+
+			if(matchArr != undefined && matchArr != null && matchArr.length > 0) {
+				var matchStr = matchArr[0].replace(/\\/g, "\\\\").replace(/\*/g, "\\*")
+					.replace(/\+/g, "\\+").replace(/\|/g, "\\|")
+					.replace(/\{/g, "\\{").replace(/\}/g, "\\}")
+					.replace(/\(/g, "\\(").replace(/\)/g, "\\)")
+					.replace(/\^/g, "\\^").replace(/\$/g, "\\$")
+					.replace(/\[/g, "\\[").replace(/\]/g, "\\]")
+					.replace(/\?/g, "\\?").replace(/\,/g, "\\,")
+					.replace(/\./g, "\\.").replace(/\&/g, "\\&");
+				matchStr = matchStr + '$';
+				result = str.replace(new RegExp(matchStr), "");
+			}
+
+			if(array.length > 0) {
+				return result.trimEnd(array.join())
+			} else {
+				return result;
+			}
+		}
+	};
+
+	//Create gitalk
+	var gitalk = new Gitalk({
+		clientID: 'e48d6de5ccd848d1bcaa',
+		clientSecret: '29f965f302e61399085e776bcfae156fbd07e74b',
+		//id: window.location.pathname,
+		//id: decodeURI(window.location.pathname),
+		//id: (window.location.pathname).split("/").pop().substring(0, 49),
+		id: decodeURI( md5( location.href.trimEnd('#.*$,\\?.*$,index.html$') ) ),
+		repo: 'rad911.github.io',
+		owner: 'rad911',
+		admin: 'rad911',
+		distractionFreeMode: 'true',
+	})
+	gitalk.render('gitalk-container');
+</script>
+
+		
+		
+	
+
+</div>
+			</div>
+			<div class="investment-content-list">
+				<div class="layout-share">
+	
+	
+
+		
+			
+			<!-- socialShare share -->
+			<div class="social-share"></div>
+
+<!--  css & js -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+			
+		
+		
+	
+</div>
+
+
+			</div>
+		</div>	
+	</div>
+	</div>
+</div>
+
+
+
+	<!-- leancloud -->
+	<!--
+	时间：2018-11-27
+	描述：
+		文章访问量：visitors
+		文章喜欢量：likes	
+		文章排行榜：topNPost
+		其他得说明：
+			01-Cookie相关的函数 
+				https://blog.csdn.net/somehow1002/article/details/78511541（Author：somehow1002）
+			02-visitors相关的函数 
+				https://blog.csdn.net/u013553529/article/details/63357382（Author：爱博客大伯）
+				https://notes.doublemine.me/2015-10-21-为NexT主题添加文章阅读量统计功能.html（Author：夏末）
+			03-topNPost相关的函数
+				https://hoxis.github.io/hexo-next-read-rank.html（Author：hoxis）
+			04-likes相关的函数，
+				参考了01 & 02进行简单的设计与实现
+-->
+
+
+	
+
+
+<!-- show math formula -->
+
+
+
+	 
+	<script src="/plugin/clipboard/clipboard.js"></script>
+	<script>
+		// Copy code !
+	    function codePreprocessing() {
+	        $("#article-content .highlight").each(function() {
+
+	            $(this).wrap('<div id="post-code"></div>');
+
+	        })
+
+	        $("#article-content #post-code").each(function() {
+
+	            $(this).prepend('<nav class="copy-nav"><span><i class="code-language"></i></span></nav>');
+
+	        })
+
+	        $("#article-content .copy-nav").each(function() {
+	            var temp = $(this).next().attr('class'),
+	                language = ((temp.length > 9) && (temp != null)) ? temp.substr(10) : "none"; //why 9? Need to check language?
+
+	            $(this).find('.code-language').text(language);
+
+	            $(this).append('<span class="copy-btn"><i class="fa fa-copy" aria-hidden="true"></i></span>');
+
+	        });
+	    }
+
+		function codeCopy() {
+		    $('#article-content #post-code').each(function(i) {
+		        var codeCopyId = 'codeCopy-' + i;
+
+		        var codeNode = $(this).find('.code'),
+		            copyButton = $(this).find('.copy-btn');
+
+		        codeNode.attr('id', codeCopyId);
+		        copyButton.attr('data-clipboard-target-id', codeCopyId);
+		    })
+
+		    
+			var clipboard = new ClipboardJS('.copy-btn', {
+					target: function(trigger) {
+						return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+					}
+		      	});
+
+			//pure js
+			function showTooltip(elem, msg) {		   
+				elem.setAttribute('aria-label', msg);
+				elem.setAttribute('class', 'copy-btn copy-status');
+				setTimeout(function() {
+					elem.setAttribute('class', 'copy-btn');
+				}, 2000);
+			}
+
+			clipboard.on('success', function(e) {
+			    e.clearSelection();
+			    console.info('Action:', e.action);		   
+			    console.info('Trigger:', e.trigger);
+			    showTooltip(e.trigger, 'Copied!');
+			    
+			});
+			clipboard.on('error', function(e) {
+			    console.error('Action:', e.action);
+			    console.error('Trigger:', e.trigger);
+			});
+		
+
+		}
+
+		if ($('.layout-post').length) {
+		    codePreprocessing();
+		    codeCopy();
+		} 
+	</script>
+
+
+
+
+
+<link rel="stylesheet" href="/plugin/fancybox/jquery.fancybox.css">
+<script src="/plugin/fancybox/jquery.fancybox.js"></script>
+
+<script type="text/javascript">
+	var titleID = $('.article-title a'),
+		imageID = $('.article-content img'),
+		videoID = $('.article-content video');
+
+	var postTitle = titleID.text() ? titleID.text() : "No post title!";
+
+	imageID.each(function() {
+		var imgPath = $(this).attr('src'),
+			imgTitle = $(this).attr('alt') ? $(this).attr('alt') : "No image description!";
+
+		//给每个匹配的<img>元素打包, 即添加父元素<a>
+		$(this).wrap('<a data-fancybox="gallery" data-caption=" 《 ' + postTitle + ' 》 ' + imgTitle + ' "  href=" ' + imgPath + ' "> </a>');
+	});
+
+	videoID.each(function() {
+		var videoPath = $(this).attr('src');
+
+		//给每个匹配的<img>元素打包, 即添加父元素<a>
+		$(this).wrap('<a data-fancybox href=" ' + videoPath + ' "> </a>');
+	});
+	//TODO：支持html5 video
+
+	if($('#layout-post').length) {
+		$('[data-fancybox="gallery"]').fancybox({
+			loop: true,
+			buttons: [
+				"zoom",
+				"share",
+				"slideShow",
+				"fullScreen",
+				//"download",
+				"thumbs",
+				"close"
+			],
+			protect: false
+		});
+	}
+</script>
+		</main>
+
+		<!--footer-->
+		<footer>
+	<div class="social">
+		<ul>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-github"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-weibo"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-pinterest"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-instagram"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-twitter"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="/atom.xml" target="_blank">
+				<i class="fa fa-rss"></i>
+			</a>
+		</li>
+			
+</ul>
+
+	</div>
+		
+	<div class="copyright">
+		<p>
+			 
+				&copy;2017 - 2020, content by Rad. All Rights Reserved.
+			
+			
+			
+
+	<!-- busuanzi -->
+	<!-- busuanzi -->
+
+		
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	
+
+		<span id="busuanzi_container_page_pv">
+	  		本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+		</span>
+
+	
+
+
+
+
+		</p>
+		<p>
+			<a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> Theme <a href="https://github.com/Sariay/hexo-theme-Annie" title="Annie" target="_blank" rel="noopener">Annie</a> by Sariay.
+			<a href="javascript:zh_tran('s');" class="zh_click" id="zh_click_s">简体</a> 
+			<a href="javascript:zh_tran('t');" class="zh_click" id="zh_click_t">繁體</a>				
+		</p>
+	</div>		
+</footer>
+		
+	<!-- set '1' to show motto in all pages! -->
+
+	<script src="/plugin/motto/motto.js"></script>
+	
+	<script type="text/javascript">
+		$(".motto").html( getMingYanContent() );
+	</script>	
+
+
+
+
+
+<!-- love effect -->
+
+	<script src="/plugin/love/love.js"></script>
+
+
+<!-- back to top -->
+
+	
+	<div id="totop">
+  		<a href="javascript:;" name="TOTOP" class="fa fa-arrow-up"></a>
+	</div>
+
+
+
+
+<!-- site analysis -->
+
+
+	<!-- site-analysis -->
+	
+	
+	
+	
+	
+ 
+
+<script src="/plugin/vibrant/vibrant.js"></script>
+<script src="/plugin/chinese/chinese.js"></script>
+<script src="/plugin/imgLazyLoader/yall.min.js"></script>
+<script src="/plugin/imgResize/jquery.resizeimagetoparent.min.js"></script>
+<script src="/plugin/nicescroll/jquery.nicescroll.js"></script>
+<script src="/js/resizediv.js"></script>
+<script src="/js/main.js"></script>
+	</body>	
+</html>
