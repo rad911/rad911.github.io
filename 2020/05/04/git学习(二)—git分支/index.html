@@ -311,7 +311,7 @@
 
 	<a href="/2020/05/04/git学习(二)—git分支/" itemprop="url">
 		<time datetime="2020-05-03T16:00:00.000Z" itemprop="dateUpdated">
-	  		2020-05-06
+	  		2020-05-14
 	  </time>
 	</a> 
 
@@ -340,12 +340,12 @@
 <h3 id="1-分支的创建"><a href="#1-分支的创建" class="headerlink" title="1. 分支的创建"></a>1. 分支的创建</h3><h4 id="分支的创建"><a href="#分支的创建" class="headerlink" title="分支的创建"></a>分支的创建</h4><p>它只是为你创建了一个可以移动的新的指针。</p>
 <p>例如当前处于master分支上，创建testing分支，你需要使用git branch命令：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git branch testing</span><br></pre></td></tr></table></figure>
-<p><img src="https://git-scm.com/book/en/v2/images/two-branches.png" alt></p>
+<p><img src="https://git-scm.com/book/en/v2/images/two-branches.png" style="zoom:50%;"></p>
 <p><strong>HEAD 指向当前所在的分支。HEAD随着当前分支的提交操作自动向前移动。</strong></p>
 <h4 id="分支的切换"><a href="#分支的切换" class="headerlink" title="分支的切换"></a>分支的切换</h4><p>使用git checkout就可以进行分支的切换。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 切换到testing分支</span><br><span class="line">$ git checkout testing</span><br></pre></td></tr></table></figure>
 <p>此时HEAD就指向了testing分支。在切换分支时，一定要注意你工作目录里的文件会被改变。 如果是切换到一个较旧的分支，你的工作目录会恢复到该分支最后一次提交时的样子。 </p>
-<p><img src="https://git-scm.com/book/en/v2/images/head-to-testing.png" alt></p>
+<p><img src="https://git-scm.com/book/en/v2/images/head-to-testing.png" style="zoom:50%;"></p>
 <h4 id="新建并切换分支"><a href="#新建并切换分支" class="headerlink" title="新建并切换分支"></a>新建并切换分支</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b branchName</span><br><span class="line">---等价于下面两条命令---</span><br><span class="line">git branch branchName</span><br><span class="line">git checkout branchName</span><br></pre></td></tr></table></figure>
 <h3 id="2-修改分支名称"><a href="#2-修改分支名称" class="headerlink" title="2.修改分支名称"></a>2.修改分支名称</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -m oldBranchName newBranchName</span><br></pre></td></tr></table></figure>
 <p>将oldBranchName命名为newBranchName。</p>
@@ -358,11 +358,11 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git merge hotfix</span><br></pre></td></tr></table></figure>
 <h3 id="5-merge和rebase"><a href="#5-merge和rebase" class="headerlink" title="5.merge和rebase"></a>5.merge和rebase</h3><p>场景：</p>
 <p>​        当我们在项目开发时，一般会基于master分支，去创建新的分支进行开发。此时同事A需要去优化数据爬取的功能，他基于master创建了dev分支，进行优化工作，在开发完成之后，他发现master分支有了新的提交，即同事B进行了文件存储的优化。此时同事A需要同事B开发的优化文件存储的功能。</p>
-<p><img src="http://m.qpic.cn/psc?/V11zqcbA1nA4Jz/C5I6tuQmWty2LHkfPkGvPnISHIioVlT23s7wXH58C9qvmWTR2nsfKwdwcSqbItbyQs3mralDzjQR1wM.SFCgsw!!/b&amp;bo=tgFbAbYBWwEDCSw!&amp;rf=viewer_4" alt></p>
+<p><img src="http://m.qpic.cn/psc?/V11zqcbA1nA4Jz/C5I6tuQmWty2LHkfPkGvPnISHIioVlT23s7wXH58C9qvmWTR2nsfKwdwcSqbItbyQs3mralDzjQR1wM.SFCgsw!!/b&amp;bo=tgFbAbYBWwEDCSw!&amp;rf=viewer_4" style="zoom: 67%;"></p>
 <p>如果此时采用merge的话，结果会如下图所示：</p>
-<p><img src="http://m.qpic.cn/psc?/V11zqcbA1nA4Jz/eDPUD.WZD3qAEkJwtXE4NXyfhuVVTKHx8rAJVORIyHcfGfEms1w3WP4TX58wklmUqwaj6eK5OHNn74MymqK02oTXr38mQ3B9Eo070*u0jfs!/b&amp;bo=twH6AbcB.gEDGTw!&amp;rf=viewer_4" alt></p>
+<p><img src="http://m.qpic.cn/psc?/V11zqcbA1nA4Jz/eDPUD.WZD3qAEkJwtXE4NXyfhuVVTKHx8rAJVORIyHcfGfEms1w3WP4TX58wklmUqwaj6eK5OHNn74MymqK02oTXr38mQ3B9Eo070*u0jfs!/b&amp;bo=twH6AbcB.gEDGTw!&amp;rf=viewer_4" style="zoom:67%;"></p>
 <p>但是同事A想要使提交记录更加简洁，不想出现提交记录分叉时。此时可以使用rebase。</p>
-<p><img src="http://m.qpic.cn/psc?/V11zqcbA1nA4Jz/eDPUD.WZD3qAEkJwtXE4NaLXOh0y6NY8iBmAkdWxyx5Tlkyor1OCjGND82SxOMTolgaMUJ4SBRlCqKpvuj5FbkJrNoU73eTxcMuq66kILpI!/b&amp;bo=ogEvAqIBLwIDGTw!&amp;rf=viewer_4" alt></p>
+<p><img src="http://m.qpic.cn/psc?/V11zqcbA1nA4Jz/eDPUD.WZD3qAEkJwtXE4NaLXOh0y6NY8iBmAkdWxyx5Tlkyor1OCjGND82SxOMTolgaMUJ4SBRlCqKpvuj5FbkJrNoU73eTxcMuq66kILpI!/b&amp;bo=ogEvAqIBLwIDGTw!&amp;rf=viewer_4" style="zoom:67%;"></p>
 <p><strong>原理：</strong></p>
 <p>​    “git rebase 分支名称”命令会把你的”dev”分支里的每个提交(commit)取消掉，并且把它们临时 保存为补丁(patch)(这些补丁放到”.git/rebase”目录中),然后把”dev”分支更新为最新的”master”分支，最后把保存的这些补丁应用到”dev”分支上。</p>
 <p>具体代码如下</p>
@@ -450,6 +450,30 @@
 			
 					<li>
 						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2020/08/20/if,if-else if和switch-case/" title="if,if-else和switch的区别">
+								if,if-else和switch的区别			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								八月 20日, 2020				
+							</p>
+							<p class="relate-post-content">
+								if和if-else的区别与多个if语句相比的话，if-else可以减少程序的判断次数，提高执行效率。if-else会在任何一个环节满足的时候终止判断。
+if-else和switch的区别在进行区间条件判断的时候，if-else非常适...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2020/08/20/if,if-else if和switch-case/" title="if,if-else和switch的区别">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="if,if-else和switch的区别">
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
 							<a class="relate-post-title" href="/2020/05/09/枚举/" title="枚举">
 								枚举			
 							</a>
@@ -523,29 +547,6 @@
 			
 					<li>
 						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2020/04/21/Stream/" title="Stream">
-								Stream			
-							</a>
-							<p class="relate-post-date">
-								<i class="fa fa-calendar"></i>
-								四月 21日, 2020				
-							</p>
-							<p class="relate-post-content">
-								Java 8 中的 Stream 是对集合对象功能的增强，它专注于对集合对象进行各种非常便利、高效的聚合操作或者大批量数据操作。Stream API（java.util.stream.*）提供了一种高效且易于使用的处理数据的方式。使用...
-							</p>
-						</div>
-
-						<div class="relate-post-cover">
-							<a href="/2020/04/21/Stream/" title="Stream">				
-								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="Stream">
-							</a>
-						</div>
-					</li>											
-			
-			
-					<li>
-						<div class="relate-post-text">
 							<a class="relate-post-title" href="/2020/04/21/lambda表达式/" title="Lambda表达式">
 								Lambda表达式			
 							</a>
@@ -564,6 +565,29 @@
 							<a href="/2020/04/21/lambda表达式/" title="Lambda表达式">				
 								
 								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="Lambda表达式">
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2020/04/21/Stream/" title="Stream">
+								Stream			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								四月 21日, 2020				
+							</p>
+							<p class="relate-post-content">
+								Java 8 中的 Stream 是对集合对象功能的增强，它专注于对集合对象进行各种非常便利、高效的聚合操作或者大批量数据操作。Stream API（java.util.stream.*）提供了一种高效且易于使用的处理数据的方式。使用...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2020/04/21/Stream/" title="Stream">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="Stream">
 							</a>
 						</div>
 					</li>											
